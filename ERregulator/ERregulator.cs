@@ -24,7 +24,7 @@ namespace ERregulator
             bool doWeapons, bool randomizeWeaponsWeight, bool keepWeaponCategories,
             bool doRings, bool randomizeRingsWeight,
             bool doGoods, 
-            bool doSpells, int spellEffectSlots,
+            bool doSpells,
             bool doBullets, bool bulletsPlus, 
             bool doHumans, 
             bool doOthers
@@ -33,17 +33,32 @@ namespace ERregulator
             if (doBullets)
             {
                 PARAM param = paramDict["Bullet"];
-                RandomizeAll(param.Rows, bulletsPlus);
+
+                // Remove the assetNo_Hit parameter, as from my experience
+                // randomizing this will mostly always spawn poles when bullets are
+                // created which will obstruct the player and definitely make
+                // the game crash
+                RandomizeAllExcept(param.Rows, bulletsPlus,
+                    "assetNo_Hit"
+                );
             }
 
             if (doRings)
             {
                 PARAM param = paramDict["EquipParamAccessory"];
-                var rings = param.Rows.Where(row => (byte)row["accessoryCategory"].Value == 0 && row.ID < 900000);
-                RandomizeSome(rings, "refId0");
+                RandomizeSome(param.Rows, false,
+                    "spEffectCategory",
+                    "sfxVariationId",
+                    "behaviorId",
+                    "residentSpEffectId1",
+                    "residentSpEffectId2",
+                    "residentSpEffectId3",
+                    "residentSpEffectId4"
+                );
+                RandomizePair<byte, int>(param.Rows, "refCategory", "refId");
 
                 if (randomizeRingsWeight)
-                    RandomizeSome(rings, "weight");
+                    RandomizeSome(param.Rows, false, "weight");
             }
 
             if (doGoods)
@@ -51,38 +66,43 @@ namespace ERregulator
                 PARAM param = paramDict["EquipParamGoods"];
 
                 // Skip flasks of tears, wondrous physicks and
-                // spectral steed whistle
+                // other important items
                 int ceruleanFlaskStart = 1000;
                 int ceruleanFlaskEnd = 1075;
                 int wondrousFlaskStart = 250;
                 int wondrousFlaskEnd = 251;
                 int spectralSteedWhistle = 130;
+                int spiritCallingBell = 8158;
                 var usable = param.Rows.Where(
                     row =>
                        !(row.ID >= ceruleanFlaskStart
                     &&   row.ID <= ceruleanFlaskEnd)
+
                     && !(row.ID >= wondrousFlaskStart
                     &&   row.ID <= wondrousFlaskEnd)
+
                     &&   row.ID != spectralSteedWhistle
+                    &&   row.ID != spiritCallingBell
                 );
 
-                RandomizeSome(usable,
+                RandomizeSome(usable, false,
                     "sfxVariationId",
-                    "effectsSfxId",
                     "castSfxId",
                     "fireSfxId",
+                    "effectsSfxId",
                     "goodsUseAnim",
-                    "behaviorId",
-                    "spEffectCategory"
+                    "goodsType",
+                    "behaviorId"
                 );
-                RandomizePair<byte, int>(usable, "refCategory", "refId_1");
+                RandomizePair<byte, int>(usable, "refCategory", "refId_default");
+                RandomizePair<byte, int>(usable, "spEffectCategory", "refId_1");
             }
 
             if (doArmor)
             {
                 PARAM param = paramDict["EquipParamProtector"];
                 var valid = param.Rows.Where(row => row.ID >= 1000000);
-                RandomizeSome(valid,
+                RandomizeSome(valid, false,
                     "residentSpEffectId", 
                     "residentSpEffectId2", 
                     "residentSpEffectId3", 
@@ -122,7 +142,7 @@ namespace ERregulator
                 );
 
                 if (randomizeArmorWeight)
-                    RandomizeSome(valid, "weight");
+                    RandomizeSome(valid, false, "weight");
             }
 
             if (doWeapons)
@@ -130,12 +150,13 @@ namespace ERregulator
                 // Always randomize the hit effect SFX parameters
                 RandomizeAll(paramDict["HitEffectSfxParam"].Rows);
 
-                // Get the melee (including shields), ranged and magic weapons seperately
+                // Get the melee (including shields), ranged and magic weapons seperately;
+                // Also skip the unarmed weapon.
                 PARAM param = paramDict["EquipParamWeapon"];
-                var meleeWeapons = param.Rows.Where(row => row.ID <= 32301200);
+                var meleeWeapons = param.Rows.Where(row => row.ID > 110000 && row.ID <= 32301200);
                 var magicWeapons = param.Rows.Where(row => row.ID > 32301200 && row.ID <= 34090000);
                 var rangedWeapons = param.Rows.Where(row => row.ID > 34090000);
-                RandomizeSome(param.Rows,
+                RandomizeSome(param.Rows, false,
                     "correctStrength", 
                     "correctAgility", 
                     "correctMagic", 
@@ -189,7 +210,7 @@ namespace ERregulator
                 );
 
                 if (randomizeWeaponsWeight)
-                    RandomizeSome(param.Rows, "weight");
+                    RandomizeSome(param.Rows, false, "weight");
 
                 // Specific category randomization, this
                 // way melee weapons won't act like ranged
@@ -208,21 +229,24 @@ namespace ERregulator
 
                 if (keepWeaponCategories)
                 {
-                    RandomizeSome(meleeWeapons, weaponParameters);
-                    RandomizeSome(rangedWeapons, weaponParameters);
-                    RandomizeSome(magicWeapons, weaponParameters);
+                    RandomizeSome(meleeWeapons, false, weaponParameters);
+                    RandomizeSome(rangedWeapons, false, weaponParameters);
+                    RandomizeSome(magicWeapons, false, weaponParameters);
                 }
                 else
-                    RandomizeSome(param.Rows, weaponParameters);
+                    RandomizeSome(param.Rows, false, weaponParameters);
             }
 
             if (doSpells)
             {
                 PARAM param = paramDict["Magic"];
-                RandomizeSome(param.Rows,
+                RandomizeSome(param.Rows, false,
                     "slotLength", 
                     "maxQuantity",
-                    //"enable_multi",
+                    "enable_multi",
+
+                    "mp",
+                    "stamina",
 
                     "requirementIntellect", 
                     "requirementFaith", 
@@ -237,15 +261,18 @@ namespace ERregulator
                     "fireSfxId",
                     "effectSfxId"
                 );
-                
-                for (int i = 0; i < spellEffectSlots; i++) 
+
+                for (int i = 0; i < 10; i++)
+                {
+                    RandomizeSome(param.Rows, false, $"consumeType{i + 1}");
                     RandomizePair<byte, int>(param.Rows, $"refCategory{i + 1}", $"refId{i + 1}");
+                }
             }
 
             if (doHumans)
             {
                 PARAM param = paramDict["CharaInitParam"];
-                RandomizeSome(param.Rows, 
+                RandomizeSome(param.Rows, false,
                     "equip_Helm", 
                     "equip_Armer", 
                     "equip_Gaunt", 
@@ -295,6 +322,64 @@ namespace ERregulator
             }
         }
 
+        private void RandomizeSome(IEnumerable<PARAM.Row> rows, bool plusMode, params string[] paramNames)
+        {
+            var cells = new List<PARAM.Cell>(rows.First().Cells);
+            foreach (string paramName in paramNames)
+            {
+                var cell = cells.Find(c => c.Def.InternalName == paramName);
+                if (cell == null
+                ||  cell == default(PARAM.Cell))
+                    return;
+
+                RandomizeCell(rows, cell, plusMode);
+            }
+        }
+
+        private void RandomizeAll(IEnumerable<PARAM.Row> rows, bool plusMode = false)
+        {
+            foreach (PARAM.Cell cell in rows.First().Cells)
+                RandomizeCell(rows, cell, plusMode);
+        }
+
+        private void RandomizeAllExcept(IEnumerable<PARAM.Row> rows, bool plusMode, params string[] except)
+        {
+            List<string> paramNames = rows.First().Cells.Select(cell => cell.Def.InternalName).ToList();
+            paramNames.RemoveAll(paramName => except.Contains(paramName));
+            RandomizeSome(rows, plusMode, paramNames.ToArray());
+        }
+    
+        private void RandomizeCell(IEnumerable<PARAM.Row> rows, PARAM.Cell cell, bool plusMode = false)
+        {
+            switch (cell.Def.DisplayType)
+            {
+                case PARAMDEF.DefType.u8:
+                    RandomizeOne<byte>(rows, cell.Def.InternalName, plusMode);
+                    break;
+                case PARAMDEF.DefType.s8:
+                    RandomizeOne<sbyte>(rows, cell.Def.InternalName, plusMode);
+                    break;
+                case PARAMDEF.DefType.u16:
+                    RandomizeOne<ushort>(rows, cell.Def.InternalName, plusMode);
+                    break;
+                case PARAMDEF.DefType.s16:
+                    RandomizeOne<short>(rows, cell.Def.InternalName, plusMode);
+                    break;
+                case PARAMDEF.DefType.u32:
+                    RandomizeOne<uint>(rows, cell.Def.InternalName, plusMode);
+                    break;
+                case PARAMDEF.DefType.s32:
+                    RandomizeOne<int>(rows, cell.Def.InternalName, plusMode);
+                    break;
+                case PARAMDEF.DefType.f32:
+                    RandomizeOne<float>(rows, cell.Def.InternalName, plusMode);
+                    break;
+                case PARAMDEF.DefType.b32:
+                    RandomizeOne<bool>(rows, cell.Def.InternalName, plusMode);
+                    break;
+            }
+        }
+
         private void RandomizeOne<T>(IEnumerable<PARAM.Row> rows, string param, bool plusMode = false)
         {
             if (plusMode)
@@ -319,81 +404,6 @@ namespace ERregulator
                 (T1 val1, T2 val2) = options.PopRandom(rand);
                 row[param1].Value = val1;
                 row[param2].Value = val2;
-            }
-        }
-
-        private void RandomizeSome(IEnumerable<PARAM.Row> rows, params string[] paramNames)
-        {
-            foreach (string paramName in paramNames)
-            {
-                var cells = new List<PARAM.Cell>(rows.First().Cells);
-                var cell = cells.Find(c => c.Def.InternalName == paramName);
-                if (cell == null
-                ||  cell == default(PARAM.Cell))
-                    return;
-
-                string cellName = cell.Def.InternalName;
-                switch (cell.Def.DisplayType)
-                {
-                    case PARAMDEF.DefType.u8:
-                        RandomizeOne<byte>(rows, cellName);
-                        break;
-                    case PARAMDEF.DefType.s8:
-                        RandomizeOne<sbyte>(rows, cellName);
-                        break;
-                    case PARAMDEF.DefType.u16:
-                        RandomizeOne<ushort>(rows, cellName);
-                        break;
-                    case PARAMDEF.DefType.s16:
-                        RandomizeOne<short>(rows, cellName);
-                        break;
-                    case PARAMDEF.DefType.u32:
-                        RandomizeOne<uint>(rows, cellName);
-                        break;
-                    case PARAMDEF.DefType.s32:
-                        RandomizeOne<int>(rows, cellName);
-                        break;
-                    case PARAMDEF.DefType.f32:
-                        RandomizeOne<float>(rows, cellName);
-                        break;
-                    case PARAMDEF.DefType.b32:
-                        RandomizeOne<bool>(rows, cellName);
-                        break;
-                }
-            }
-        }
-
-        private void RandomizeAll(IEnumerable<PARAM.Row> rows, bool plusMode = false)
-        {
-            foreach (PARAM.Cell cell in rows.First().Cells)
-            {
-                string cellName = cell.Def.InternalName;
-                switch (cell.Def.DisplayType) {
-                    case PARAMDEF.DefType.u8:
-                        RandomizeOne<byte>(rows, cellName, plusMode);
-                        break;
-                    case PARAMDEF.DefType.s8:
-                        RandomizeOne<sbyte>(rows, cellName, plusMode);
-                        break;
-                    case PARAMDEF.DefType.u16:
-                        RandomizeOne<ushort>(rows, cellName, plusMode);
-                        break;
-                    case PARAMDEF.DefType.s16:
-                        RandomizeOne<short>(rows, cellName, plusMode);
-                        break;
-                    case PARAMDEF.DefType.u32:
-                        RandomizeOne<uint>(rows, cellName, plusMode);
-                        break;
-                    case PARAMDEF.DefType.s32:
-                        RandomizeOne<int>(rows, cellName, plusMode);
-                        break;
-                    case PARAMDEF.DefType.f32:
-                        RandomizeOne<float>(rows, cellName, plusMode);
-                        break;
-                    case PARAMDEF.DefType.b32:
-                        RandomizeOne<bool>(rows, cellName, plusMode);
-                        break;
-                }
             }
         }
     }

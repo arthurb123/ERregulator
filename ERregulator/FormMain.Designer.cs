@@ -37,8 +37,6 @@
             this.btnRandomize = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.gbxOptions = new System.Windows.Forms.GroupBox();
-            this.spellEffectSlots = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.ringsRandomizeWeight = new System.Windows.Forms.CheckBox();
             this.weaponKeepCategories = new System.Windows.Forms.CheckBox();
             this.weaponRandomizeWeight = new System.Windows.Forms.CheckBox();
@@ -60,7 +58,6 @@
             lblGameDir = new System.Windows.Forms.Label();
             lblSeed = new System.Windows.Forms.Label();
             this.gbxOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spellEffectSlots)).BeginInit();
             this.SuspendLayout();
             // 
             // lblGameDir
@@ -136,8 +133,6 @@
             this.gbxOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbxOptions.Controls.Add(this.spellEffectSlots);
-            this.gbxOptions.Controls.Add(this.label1);
             this.gbxOptions.Controls.Add(this.ringsRandomizeWeight);
             this.gbxOptions.Controls.Add(this.weaponKeepCategories);
             this.gbxOptions.Controls.Add(this.weaponRandomizeWeight);
@@ -161,39 +156,6 @@
             this.gbxOptions.TabIndex = 6;
             this.gbxOptions.TabStop = false;
             this.gbxOptions.Text = "Options";
-            // 
-            // spellEffectSlots
-            // 
-            this.spellEffectSlots.Location = new System.Drawing.Point(208, 182);
-            this.spellEffectSlots.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.spellEffectSlots.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.spellEffectSlots.Name = "spellEffectSlots";
-            this.spellEffectSlots.Size = new System.Drawing.Size(50, 22);
-            this.spellEffectSlots.TabIndex = 17;
-            this.toolTip1.SetToolTip(this.spellEffectSlots, resources.GetString("spellEffectSlots.ToolTip"));
-            this.spellEffectSlots.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 185);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Effect Slots";
-            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // ringsRandomizeWeight
             // 
@@ -446,7 +408,6 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.gbxOptions.ResumeLayout(false);
             this.gbxOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.spellEffectSlots)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -476,8 +437,6 @@
         private System.Windows.Forms.CheckBox armorRandomizeWeight;
         private System.Windows.Forms.CheckBox weaponKeepCategories;
         private System.Windows.Forms.CheckBox ringsRandomizeWeight;
-        private System.Windows.Forms.NumericUpDown spellEffectSlots;
-        private System.Windows.Forms.Label label1;
     }
 }
 

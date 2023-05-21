@@ -198,7 +198,7 @@ namespace ERregulator
                     cbxWeapons.Checked, weaponRandomizeWeight.Checked, weaponKeepCategories.Checked,
                     cbxRings.Checked, ringsRandomizeWeight.Checked,
                     cbxGoods.Checked,
-                    cbxSpells.Checked, (int)spellEffectSlots.Value,
+                    cbxSpells.Checked,
                     cbxBullets.Checked, cbxBulletsPlus.Checked, 
                     cbxHumans.Checked, 
                     cbxOther.Checked
