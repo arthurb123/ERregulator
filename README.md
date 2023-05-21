@@ -18,7 +18,9 @@ As there is no official release yet, please refer to [Building from source](#bui
    This project requires that the SoulsFormats submodule is on the [Elden Ring](https://github.com/JKAnderson/SoulsFormats/tree/er) branch, not the master branch.<br>
    To confirm that you are using the correct branch, use ``git checkout er`` in the SoulsFormats submodule folder.
 3. Open the ERregulator solution in Visual Studio and download the necessary NuGet packages.
-4. Build the project using Visual Studio, or by using ``dotnet build``.
+4. Build the project using Visual Studio, or by using ``dotnet build``.<br>
+   If you get a targeting error for the SoulsFormats submodule, make sure SoulsFormats targeting framework is set to ``net472``.<br>
+
 To use the app, please refer to [Usage](#usage).
 
 ## Credits
