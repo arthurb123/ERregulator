@@ -332,8 +332,8 @@
             this.cbxGoods.Size = new System.Drawing.Size(70, 20);
             this.cbxGoods.TabIndex = 5;
             this.cbxGoods.Text = "Goods";
-            this.toolTip1.SetToolTip(this.cbxGoods, "Randomizes usable item effects, the flasks of wondrous physicks and spectral stee" +
-        "d whistle will stay the same.");
+            this.toolTip1.SetToolTip(this.cbxGoods, "Randomizes usable item effects, the flasks and spectral steed whistle will stay t" +
+        "he same.");
             this.cbxGoods.UseVisualStyleBackColor = true;
             // 
             // cbxRings

@@ -50,15 +50,20 @@ namespace ERregulator
             {
                 PARAM param = paramDict["EquipParamGoods"];
 
-                // Skip flasks of wondrous physicks and spectral steed whistle
-                int flaskStart = 1000;
-                int flaskEnd = 1075;
+                // Skip flasks of tears, wondrous physicks and
+                // spectral steed whistle
+                int ceruleanFlaskStart = 1000;
+                int ceruleanFlaskEnd = 1075;
+                int wondrousFlaskStart = 250;
+                int wondrousFlaskEnd = 251;
                 int spectralSteedWhistle = 130;
                 var usable = param.Rows.Where(
                     row =>
-                      !(row.ID >= flaskStart
-                    &&  row.ID <= flaskEnd)
-                    &&  row.ID != spectralSteedWhistle
+                       !(row.ID >= ceruleanFlaskStart
+                    &&   row.ID <= ceruleanFlaskEnd)
+                    && !(row.ID >= wondrousFlaskStart
+                    &&   row.ID <= wondrousFlaskEnd)
+                    &&   row.ID != spectralSteedWhistle
                 );
 
                 RandomizeSome(usable,
