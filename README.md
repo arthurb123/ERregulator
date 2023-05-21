@@ -15,8 +15,8 @@ As there is no official release yet, please refer to [Building from source](#bui
 
 ## Building from source
 1. Clone the GitHub repository, making sure to clone submodules using ``git clone --recursive``.<br>
-   Make sure that the SoulsFormats submodule is on the [Elden Ring](https://github.com/JKAnderson/SoulsFormats/tree/er) branch, not the master branch.<br>
-   To make sure you are using the correct branch, use ``git checkout er`` in the SoulsFormats submodule folder.
+   This project requires that the SoulsFormats submodule is on the [Elden Ring](https://github.com/JKAnderson/SoulsFormats/tree/er) branch, not the master branch.<br>
+   To confirm that you are using the correct branch, use ``git checkout er`` in the SoulsFormats submodule folder.
 3. Open the ERregulator solution in Visual Studio and download the necessary NuGet packages.
 4. Build the project using Visual Studio, or by using ``dotnet build``.
 To use the app, please refer to [Usage](#usage).
