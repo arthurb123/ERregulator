@@ -37,6 +37,12 @@
             this.btnRandomize = new System.Windows.Forms.Button();
             this.btnRestore = new System.Windows.Forms.Button();
             this.gbxOptions = new System.Windows.Forms.GroupBox();
+            this.spellEffectSlots = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.ringsRandomizeWeight = new System.Windows.Forms.CheckBox();
+            this.weaponKeepCategories = new System.Windows.Forms.CheckBox();
+            this.weaponRandomizeWeight = new System.Windows.Forms.CheckBox();
+            this.armorRandomizeWeight = new System.Windows.Forms.CheckBox();
             this.cbxBulletsPlus = new System.Windows.Forms.CheckBox();
             this.cbxOther = new System.Windows.Forms.CheckBox();
             this.cbxHumans = new System.Windows.Forms.CheckBox();
@@ -51,12 +57,6 @@
             this.txtStatus = new System.Windows.Forms.TextBox();
             this.fbdGameDir = new System.Windows.Forms.FolderBrowserDialog();
             this.txtGameDir = new System.Windows.Forms.TextBox();
-            this.armorRandomizeWeight = new System.Windows.Forms.CheckBox();
-            this.weaponRandomizeWeight = new System.Windows.Forms.CheckBox();
-            this.weaponKeepCategories = new System.Windows.Forms.CheckBox();
-            this.ringsRandomizeWeight = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.spellEffectSlots = new System.Windows.Forms.NumericUpDown();
             lblGameDir = new System.Windows.Forms.Label();
             lblSeed = new System.Windows.Forms.Label();
             this.gbxOptions.SuspendLayout();
@@ -161,6 +161,88 @@
             this.gbxOptions.TabIndex = 6;
             this.gbxOptions.TabStop = false;
             this.gbxOptions.Text = "Options";
+            // 
+            // spellEffectSlots
+            // 
+            this.spellEffectSlots.Location = new System.Drawing.Point(208, 182);
+            this.spellEffectSlots.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.spellEffectSlots.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spellEffectSlots.Name = "spellEffectSlots";
+            this.spellEffectSlots.Size = new System.Drawing.Size(50, 22);
+            this.spellEffectSlots.TabIndex = 17;
+            this.toolTip1.SetToolTip(this.spellEffectSlots, resources.GetString("spellEffectSlots.ToolTip"));
+            this.spellEffectSlots.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(112, 185);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 16);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Effect Slots";
+            this.toolTip1.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
+            // 
+            // ringsRandomizeWeight
+            // 
+            this.ringsRandomizeWeight.AutoSize = true;
+            this.ringsRandomizeWeight.Location = new System.Drawing.Point(115, 128);
+            this.ringsRandomizeWeight.Name = "ringsRandomizeWeight";
+            this.ringsRandomizeWeight.Size = new System.Drawing.Size(143, 20);
+            this.ringsRandomizeWeight.TabIndex = 15;
+            this.ringsRandomizeWeight.Text = "Randomize Weight";
+            this.toolTip1.SetToolTip(this.ringsRandomizeWeight, "On: Talismans will have random weights, this can be quite unfair especially in th" +
+        "e early game.\r\nOff: Talismans will have their original weight.");
+            this.ringsRandomizeWeight.UseVisualStyleBackColor = true;
+            // 
+            // weaponKeepCategories
+            // 
+            this.weaponKeepCategories.AutoSize = true;
+            this.weaponKeepCategories.Location = new System.Drawing.Point(276, 100);
+            this.weaponKeepCategories.Name = "weaponKeepCategories";
+            this.weaponKeepCategories.Size = new System.Drawing.Size(130, 20);
+            this.weaponKeepCategories.TabIndex = 14;
+            this.weaponKeepCategories.Text = "Keep Categories";
+            this.toolTip1.SetToolTip(this.weaponKeepCategories, "On: Movesets, weapon arts and stats will be shuffled per weapon category.\r\nOff: M" +
+        "elee weapons can share movesets, weapon arts and stats with ranged/magic weapons" +
+        ", and vice versa.");
+            this.weaponKeepCategories.UseVisualStyleBackColor = true;
+            // 
+            // weaponRandomizeWeight
+            // 
+            this.weaponRandomizeWeight.AutoSize = true;
+            this.weaponRandomizeWeight.Location = new System.Drawing.Point(115, 100);
+            this.weaponRandomizeWeight.Name = "weaponRandomizeWeight";
+            this.weaponRandomizeWeight.Size = new System.Drawing.Size(143, 20);
+            this.weaponRandomizeWeight.TabIndex = 13;
+            this.weaponRandomizeWeight.Text = "Randomize Weight";
+            this.toolTip1.SetToolTip(this.weaponRandomizeWeight, "On: Weapons will have random weights, this can be quite unfair especially in the " +
+        "early game.\r\nOff: Weapons will have their original weight.");
+            this.weaponRandomizeWeight.UseVisualStyleBackColor = true;
+            // 
+            // armorRandomizeWeight
+            // 
+            this.armorRandomizeWeight.AutoSize = true;
+            this.armorRandomizeWeight.Location = new System.Drawing.Point(115, 71);
+            this.armorRandomizeWeight.Name = "armorRandomizeWeight";
+            this.armorRandomizeWeight.Size = new System.Drawing.Size(143, 20);
+            this.armorRandomizeWeight.TabIndex = 12;
+            this.armorRandomizeWeight.Text = "Randomize Weight";
+            this.toolTip1.SetToolTip(this.armorRandomizeWeight, "On: Armor will have random weights, this can be quite unfair especially in the ea" +
+        "rly game.\r\nOff: Armor will have their original weight.\r\n");
+            this.armorRandomizeWeight.UseVisualStyleBackColor = true;
             // 
             // cbxBulletsPlus
             // 
@@ -341,92 +423,6 @@
             this.txtGameDir.Size = new System.Drawing.Size(755, 22);
             this.txtGameDir.TabIndex = 1;
             this.txtGameDir.Text = global::ERregulator.Properties.Settings.Default.GameDir;
-            // 
-            // armorRandomizeWeight
-            // 
-            this.armorRandomizeWeight.AutoSize = true;
-            this.armorRandomizeWeight.Location = new System.Drawing.Point(115, 71);
-            this.armorRandomizeWeight.Name = "armorRandomizeWeight";
-            this.armorRandomizeWeight.Size = new System.Drawing.Size(143, 20);
-            this.armorRandomizeWeight.TabIndex = 12;
-            this.armorRandomizeWeight.Text = "Randomize Weight";
-            this.toolTip1.SetToolTip(this.armorRandomizeWeight, "On: Armor will have random weights, this can be quite unfair especially in the ea" +
-        "rly game.\r\nOff: Armor will have their original weight.\r\n");
-            this.armorRandomizeWeight.UseVisualStyleBackColor = true;
-            // 
-            // weaponRandomizeWeight
-            // 
-            this.weaponRandomizeWeight.AutoSize = true;
-            this.weaponRandomizeWeight.Location = new System.Drawing.Point(115, 100);
-            this.weaponRandomizeWeight.Name = "weaponRandomizeWeight";
-            this.weaponRandomizeWeight.Size = new System.Drawing.Size(143, 20);
-            this.weaponRandomizeWeight.TabIndex = 13;
-            this.weaponRandomizeWeight.Text = "Randomize Weight";
-            this.toolTip1.SetToolTip(this.weaponRandomizeWeight, "On: Weapons will have random weights, this can be quite unfair especially in the " +
-        "early game.\r\nOff: Weapons will have their original weight.");
-            this.weaponRandomizeWeight.UseVisualStyleBackColor = true;
-            // 
-            // weaponKeepCategories
-            // 
-            this.weaponKeepCategories.AutoSize = true;
-            this.weaponKeepCategories.Location = new System.Drawing.Point(276, 100);
-            this.weaponKeepCategories.Name = "weaponKeepCategories";
-            this.weaponKeepCategories.Size = new System.Drawing.Size(130, 20);
-            this.weaponKeepCategories.TabIndex = 14;
-            this.weaponKeepCategories.Text = "Keep Categories";
-            this.toolTip1.SetToolTip(this.weaponKeepCategories, "On: Movesets, weapon arts and stats will be shuffled per weapon category.\r\nOff: M" +
-        "elee weapons can share movesets, weapon arts and stats with ranged/magic weapons" +
-        ", and vice versa.");
-            this.weaponKeepCategories.UseVisualStyleBackColor = true;
-            // 
-            // ringsRandomizeWeight
-            // 
-            this.ringsRandomizeWeight.AutoSize = true;
-            this.ringsRandomizeWeight.Location = new System.Drawing.Point(115, 128);
-            this.ringsRandomizeWeight.Name = "ringsRandomizeWeight";
-            this.ringsRandomizeWeight.Size = new System.Drawing.Size(143, 20);
-            this.ringsRandomizeWeight.TabIndex = 15;
-            this.ringsRandomizeWeight.Text = "Randomize Weight";
-            this.toolTip1.SetToolTip(this.ringsRandomizeWeight, "On: Talismans will have random weights, this can be quite unfair especially in th" +
-        "e early game.\r\nOff: Talismans will have their original weight.");
-            this.ringsRandomizeWeight.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 185);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 16);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Effect Slots";
-            this.toolTip1.SetToolTip(this.label1, "Determines the amount of spell effect slots to be randomized, the more effect slo" +
-        "ts get randomized \r\nthe crazier the spells but the higher the chance of the game" +
-        " crashing. (Default = 6)\r\n");
-            // 
-            // spellEffectSlots
-            // 
-            this.spellEffectSlots.Location = new System.Drawing.Point(208, 182);
-            this.spellEffectSlots.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.spellEffectSlots.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.spellEffectSlots.Name = "spellEffectSlots";
-            this.spellEffectSlots.Size = new System.Drawing.Size(50, 22);
-            this.spellEffectSlots.TabIndex = 17;
-            this.toolTip1.SetToolTip(this.spellEffectSlots, "Determines the amount of spell effect slots to be randomized, the more effect slo" +
-        "ts get randomized \r\nthe crazier the spells but the higher the chance of the game" +
-        " crashing. (Default = 6)");
-            this.spellEffectSlots.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
             // 
             // FormMain
             // 

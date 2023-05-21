@@ -1,7 +1,6 @@
 ﻿using SoulsFormats;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace ERregulator
@@ -51,20 +50,26 @@ namespace ERregulator
             {
                 PARAM param = paramDict["EquipParamGoods"];
 
-                // Skip flasks of wondrous physicks and spectral steed whistle,
-                // therefore extract a list that does not include the flask
-                // consumables
+                // Skip flasks of wondrous physicks and spectral steed whistle
                 int flaskStart = 1000;
                 int flaskEnd = 1075;
                 int spectralSteedWhistle = 130;
                 var usable = param.Rows.Where(
-                    row => 
+                    row =>
                       !(row.ID >= flaskStart
                     &&  row.ID <= flaskEnd)
                     &&  row.ID != spectralSteedWhistle
                 );
 
-                RandomizeSome(usable, "sfxVariationId", "goodsUseAnim");
+                RandomizeSome(usable,
+                    "sfxVariationId",
+                    "effectsSfxId",
+                    "castSfxId",
+                    "fireSfxId",
+                    "goodsUseAnim",
+                    "behaviorId",
+                    "spEffectCategory"
+                );
                 RandomizePair<byte, int>(usable, "refCategory", "refId_1");
             }
 
@@ -132,6 +137,16 @@ namespace ERregulator
                     "correctFaith",
                     "correctLuck",
 
+                    "properStrength",
+                    "properAgility",
+                    "properMagic",
+                    "properFaith",
+                    "properLuck",
+
+                    "physGuardCutRate",
+                    "magGuardCutRate",
+                    "fireGuardCutRate",
+                    "thunGuardCutRate",
                     "slashGuardCutRate",
                     "blowGuardCutRate",
                     "thrustGuardCutRate",
@@ -139,31 +154,33 @@ namespace ERregulator
                     "diseaseGuardResist",
                     "bloodGuardResist",
                     "curseGuardResist",
+                    "sleepGuardResist",
+                    "madnessGuardResist",
+                    "freezeGuardResist",
 
-                    "residentSpEffectId0", 
-                    "residentSpEffectId1", 
-                    "residentSpEffectId2", 
+                    "spEffectBehaviorId0",
+                    "spEffectBehaviorId1",
+                    "spEffectBehaviorId2",
+                    "residentSpEffectId",
+                    "residentSpEffectId1",
+                    "residentSpEffectId2",
 
                     "parryDamageLife",
                     "attackBasePhysics",
                     "attackBaseMagic",
+                    "attackBaseDark",
                     "attackBaseFire",
                     "attackBaseThunder",
-                    "attackBaseStamina", 
+                    "attackBaseStamina",
 
                     "saWeaponDamage", 
-                    "saDurability",
+                    "durabilityMax",
                     //"throwAtkRate",
                     //"bowDistRate",
                     "stealthAtkRate",
 
                     "guardAngle", 
-                    "staminaGuardDef", 
-
-                    "properStrength", 
-                    "properAgility", 
-                    "properMagic", 
-                    "properFaith"
+                    "staminaGuardDef"
                 );
 
                 if (randomizeWeaponsWeight)
@@ -177,6 +194,7 @@ namespace ERregulator
                     "wepmotionCategory",
                     "guardmotionCategory",
                     "spAtkcategory",
+                    "spAttribute",
                     "wepmotionOneHandId",
                     "wepmotionBothHandId",
                     "swordArtsParamId",
@@ -191,13 +209,6 @@ namespace ERregulator
                 }
                 else
                     RandomizeSome(param.Rows, weaponParameters);
-
-                // TODO: This does not work
-
-                //for (int i = 0; i < 24; i++)
-                //    RandomizeOne<int>(valid, "HitSfx" + i);
-                //for (int i = 0; i < 8; i++)
-                //    RandomizeOne<int>(valid, "weaponVfx" + i);
             }
 
             if (doSpells)
@@ -241,32 +252,16 @@ namespace ERregulator
                     "equip_Wep_Right", 
                     "equip_Subwep_Right", 
                     "equip_Wep_Left",
-                    "equip_Subwep_Left",
-                    "equip_Accessory01", 
-                    "equip_Accessory02", 
-                    "equip_Accessory03", 
-                    "equip_Accessory04",
-
-                    "gestureId0",
-                    "gestureId1",
-                    "gestureId2",
-                    "gestureId3",
-                    "gestureId4",
-                    "gestureId5",
-                    "gestureId6",
-
-                    "bodyScaleHead", 
-                    "bodyScaleBreast", 
-                    "BodyScaleAbdomen", 
-                    "BodyScaleArm", 
-                    "BodyScaleLeg"
+                    "equip_Subwep_Left"
                 );
             }
 
+            // This will absolutely break NPC behaviour
             //{
             //    PARAM param = paramDict["NpcParam"];
             //    foreach (var cell in param.Rows[0].Cells)
             //    {
+            //        string paramName = cell.Def.InternalName;
             //        if (paramName != "teamType" && !paramName.StartsWith("ModelDispMask"))
             //            RandomizeSome(param.Rows, paramName);
             //    }
@@ -279,96 +274,21 @@ namespace ERregulator
                 //RandomizeAll(paramDict["AttackElementCorrectParam"].Rows);
                 //RandomizeAll(paramDict["BehaviorParam"].Rows);
                 //RandomizeAll(paramDict["BehaviorParam_PC"].Rows);
-                //RandomizeAll(paramDict["DecalParam"].Rows);
-                RandomizeAll(paramDict["HitEffectSfxConceptParam"].Rows);
-                RandomizeAll(paramDict["SwordArtsParam"].Rows);
                 //RandomizeAll(paramDict["ModelSfxParam"].Rows);
                 //RandomizeAll(paramDict["NpcThinkParam"].Rows);
                 //RandomizeAll(paramDict["ObjectMaterialSfxParam"].Rows);
-                RandomizeAll(paramDict["PhantomParam"].Rows);
                 //RandomizeAll(paramDict["UpperArmParam"].Rows);
                 //RandomizeAll(paramDict["WepAbsorpPosParam"].Rows);
+
+                RandomizeAll(paramDict["DecalParam"].Rows);
+                RandomizeAll(paramDict["HitEffectSfxConceptParam"].Rows);
+                RandomizeAll(paramDict["SwordArtsParam"].Rows);
+                RandomizeAll(paramDict["FootSfxParam"].Rows);
+                RandomizeAll(paramDict["PhantomParam"].Rows);
                 RandomizeAll(paramDict["WetAspectParam"].Rows);
-
-                // Randomize weather
-                {
-                    PARAM param = paramDict["WeatherParam"];
-                    List<string> valid = param.Rows.First().Cells.Select(cell => cell.Def.InternalName).ToList();
-
-                    // TODO: These properties will all crash when used
-                    //       in the method RandomizeOne. I've noticed all the
-                    //       unsupported properties feature a (:numeric) suffix
-                    //       in their names in the layout files.
-                    //       However I don't know what this suffix means or how
-                    //       to support it -- so let's just ignore these properties
-                    List<string> elementsToRemove = new List<string>
-                    {
-                        "GparamId",
-                        "NextLotIngameSecondsMin",
-                        "NextLotIngameSecondsMax"
-                    };
-                    valid.RemoveAll(element => elementsToRemove.Contains(element));
-
-                    RandomizeSome(
-                        param.Rows,
-                        valid.ToArray()
-                    );
-                }
-
-                // Randomize decals
-                {
-                    PARAM param = paramDict["DecalParam"];
-                    List<string> valid = param.Rows.First().Cells.Select(cell => cell.Def.InternalName).ToList();
-
-                    // TODO: These properties will all crash when used
-                    //       in the method RandomizeOne. I've noticed all the
-                    //       unsupported properties feature a (:numeric) suffix
-                    //       in their names in the layout files.
-                    //       However I don't know what this suffix means or how
-                    //       to support it -- so let's just ignore these properties
-                    List<string> elementsToRemove = new List<string>
-                    {
-                        "pad_05",
-                        "pad_08",
-                        "pad_09",
-                        "pad_10",
-                        "pad_11",
-                        "pad_12",
-                        "useDeferredDecal",
-                        "usePaintDecal",
-                        "useEmissive",
-                        "putVertical",
-                        "replaceTextureId_byMaterial",
-                        "dmypolyCategory",
-                        "bloodTypeEnable",
-                        "bUseNormal",
-                        "usePom",
-                        "randVaria_Normal",
-                        "randVaria_Height",
-                        "randVaria_Emissive",
-                        "randVaria_Diffuse",
-                        "randVaria_Mask",
-                        "randVaria_Reflec",
-                        "thinOutOverlapLimitNum",
-                        "thinOutNeighborLimitNum"
-                    };
-                    valid.RemoveAll(element => elementsToRemove.Contains(element));
-
-                    RandomizeSome(
-                        param.Rows,
-                        valid.ToArray()
-                    );
-                }
+                RandomizeAll(paramDict["WeatherParam"].Rows);
             }
         }
-
-        // TODO: I do not know how to figure out the correct categories
-        //       for elden ring, therefore I will not use these values
-        //       as they are from the original DS3 irregulator
-        private static byte[] weaponCats = { 0, 1, 2, 3, 4, 5, 6, 7, 9, 12 };
-        private static byte[] bowCats = { 10, 11 };
-        private static byte[] ammoCats = { 13, 14 };
-        private static byte[] catalystCats = { 8 };
 
         private void RandomizeOne<T>(IEnumerable<PARAM.Row> rows, string param, bool plusMode = false)
         {
@@ -423,7 +343,7 @@ namespace ERregulator
                         RandomizeOne<short>(rows, cellName);
                         break;
                     case PARAMDEF.DefType.u32:
-                        RandomizeOne<short>(rows, cellName);
+                        RandomizeOne<uint>(rows, cellName);
                         break;
                     case PARAMDEF.DefType.s32:
                         RandomizeOne<int>(rows, cellName);
@@ -457,7 +377,7 @@ namespace ERregulator
                         RandomizeOne<short>(rows, cellName, plusMode);
                         break;
                     case PARAMDEF.DefType.u32:
-                        RandomizeOne<short>(rows, cellName, plusMode);
+                        RandomizeOne<uint>(rows, cellName, plusMode);
                         break;
                     case PARAMDEF.DefType.s32:
                         RandomizeOne<int>(rows, cellName, plusMode);
