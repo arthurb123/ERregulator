@@ -1,0 +1,1109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Costura.Fody.3.1.6\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.3.1.6\build\Costura.Fody.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9AFD144B-9E2A-42BB-936D-2B2401CBD495}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ERregulator</RootNamespace>
+    <AssemblyName>ERregulator</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Costura, Version=3.1.6.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.3.1.6\lib\net46\Costura.dll</HintPath>
+    </Reference>
+    <Reference Include="Octokit, Version=0.32.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.32.0\lib\net45\Octokit.dll</HintPath>
+    </Reference>
+    <Reference Include="Semver, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Semver.2.0.4\lib\net452\Semver.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ERregulator.cs" />
+    <Compile Include="ListExtensions.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Layouts\Defs\ActionButtonParam.xml">
+      <Link>Layouts\Defs\\ActionButtonParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ActionButtonParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AiAnimTblParam.xml">
+      <Link>Layouts\Defs\\AiAnimTblParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AiAnimTblParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AiOddsParam.xml">
+      <Link>Layouts\Defs\\AiOddsParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AiOddsParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AiSoundParam.xml">
+      <Link>Layouts\Defs\\AiSoundParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AiSoundParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AiStandardInfo.xml">
+      <Link>Layouts\Defs\\AiStandardInfo.xml</Link>
+      <TargetPath>Layouts\Defs\\AiStandardInfo.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AssetEnvironmentGeometryParam.xml">
+      <Link>Layouts\Defs\\AssetEnvironmentGeometryParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AssetEnvironmentGeometryParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AssetMaterialSfxParam.xml">
+      <Link>Layouts\Defs\\AssetMaterialSfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AssetMaterialSfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AssetModelSfxParam.xml">
+      <Link>Layouts\Defs\\AssetModelSfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AssetModelSfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AtkParam_Npc.xml">
+      <Link>Layouts\Defs\\AtkParam_Npc.xml</Link>
+      <TargetPath>Layouts\Defs\\AtkParam_Npc.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AtkParam_Pc.xml">
+      <Link>Layouts\Defs\\AtkParam_Pc.xml</Link>
+      <TargetPath>Layouts\Defs\\AtkParam_Pc.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AttackElementCorrectParam.xml">
+      <Link>Layouts\Defs\\AttackElementCorrectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AttackElementCorrectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\AutoCreateEnvSoundParam.xml">
+      <Link>Layouts\Defs\\AutoCreateEnvSoundParam.xml</Link>
+      <TargetPath>Layouts\Defs\\AutoCreateEnvSoundParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BaseChrSelectMenuParam.xml">
+      <Link>Layouts\Defs\\BaseChrSelectMenuParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BaseChrSelectMenuParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BehaviorParam.xml">
+      <Link>Layouts\Defs\\BehaviorParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BehaviorParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BonfireWarpParam.xml">
+      <Link>Layouts\Defs\\BonfireWarpParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BonfireWarpParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BonfireWarpSubCategoryParam.xml">
+      <Link>Layouts\Defs\\BonfireWarpSubCategoryParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BonfireWarpSubCategoryParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BonfireWarpTabParam.xml">
+      <Link>Layouts\Defs\\BonfireWarpTabParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BonfireWarpTabParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BuddyParam.xml">
+      <Link>Layouts\Defs\\BuddyParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BuddyParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BuddyStoneParam.xml">
+      <Link>Layouts\Defs\\BuddyStoneParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BuddyStoneParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BudgetParam.xml">
+      <Link>Layouts\Defs\\BudgetParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BudgetParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Bullet.xml">
+      <Link>Layouts\Defs\\Bullet.xml</Link>
+      <TargetPath>Layouts\Defs\\Bullet.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\BulletCreateLimitParam.xml">
+      <Link>Layouts\Defs\\BulletCreateLimitParam.xml</Link>
+      <TargetPath>Layouts\Defs\\BulletCreateLimitParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CalcCorrectGraph.xml">
+      <Link>Layouts\Defs\\CalcCorrectGraph.xml</Link>
+      <TargetPath>Layouts\Defs\\CalcCorrectGraph.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CameraFadeParam.xml">
+      <Link>Layouts\Defs\\CameraFadeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CameraFadeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Ceremony.xml">
+      <Link>Layouts\Defs\\Ceremony.xml</Link>
+      <TargetPath>Layouts\Defs\\Ceremony.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CharaInitParam.xml">
+      <Link>Layouts\Defs\\CharaInitParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CharaInitParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CharMakeMenuListItemParam.xml">
+      <Link>Layouts\Defs\\CharMakeMenuListItemParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CharMakeMenuListItemParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CharMakeMenuTopParam.xml">
+      <Link>Layouts\Defs\\CharMakeMenuTopParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CharMakeMenuTopParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ChrActivateConditionParam.xml">
+      <Link>Layouts\Defs\\ChrActivateConditionParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ChrActivateConditionParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ChrModelParam.xml">
+      <Link>Layouts\Defs\\ChrModelParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ChrModelParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ClearCountCorrectParam.xml">
+      <Link>Layouts\Defs\\ClearCountCorrectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ClearCountCorrectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CommonSystemParam.xml">
+      <Link>Layouts\Defs\\CommonSystemParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CommonSystemParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CoolTimeParam.xml">
+      <Link>Layouts\Defs\\CoolTimeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CoolTimeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CutsceneGparamTimeParam.xml">
+      <Link>Layouts\Defs\\CutsceneGparamTimeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CutsceneGparamTimeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CutsceneMapIdParam.xml">
+      <Link>Layouts\Defs\\CutsceneMapIdParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CutsceneMapIdParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CutSceneTextureLoadParam.xml">
+      <Link>Layouts\Defs\\CutSceneTextureLoadParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CutSceneTextureLoadParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CutsceneTimezoneConvertParam.xml">
+      <Link>Layouts\Defs\\CutsceneTimezoneConvertParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CutsceneTimezoneConvertParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\CutsceneWeatherOverrideGparamConvertParam.xml">
+      <Link>Layouts\Defs\\CutsceneWeatherOverrideGparamConvertParam.xml</Link>
+      <TargetPath>Layouts\Defs\\CutsceneWeatherOverrideGparamConvertParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\DecalParam.xml">
+      <Link>Layouts\Defs\\DecalParam.xml</Link>
+      <TargetPath>Layouts\Defs\\DecalParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\DefaultKeyAssign.xml">
+      <Link>Layouts\Defs\\DefaultKeyAssign.xml</Link>
+      <TargetPath>Layouts\Defs\\DefaultKeyAssign.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\DirectionCameraParam.xml">
+      <Link>Layouts\Defs\\DirectionCameraParam.xml</Link>
+      <TargetPath>Layouts\Defs\\DirectionCameraParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EnemyCommonParam.xml">
+      <Link>Layouts\Defs\\EnemyCommonParam.xml</Link>
+      <TargetPath>Layouts\Defs\\EnemyCommonParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EnemyStandardInfo.xml">
+      <Link>Layouts\Defs\\EnemyStandardInfo.xml</Link>
+      <TargetPath>Layouts\Defs\\EnemyStandardInfo.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EnvObjLotParam.xml">
+      <Link>Layouts\Defs\\EnvObjLotParam.xml</Link>
+      <TargetPath>Layouts\Defs\\EnvObjLotParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EquipMtrlSetParam.xml">
+      <Link>Layouts\Defs\\EquipMtrlSetParam.xml</Link>
+      <TargetPath>Layouts\Defs\\EquipMtrlSetParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EquipParamAccessory.xml">
+      <Link>Layouts\Defs\\EquipParamAccessory.xml</Link>
+      <TargetPath>Layouts\Defs\\EquipParamAccessory.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EquipParamCustomWeapon.xml">
+      <Link>Layouts\Defs\\EquipParamCustomWeapon.xml</Link>
+      <TargetPath>Layouts\Defs\\EquipParamCustomWeapon.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EquipParamGem.xml">
+      <Link>Layouts\Defs\\EquipParamGem.xml</Link>
+      <TargetPath>Layouts\Defs\\EquipParamGem.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EquipParamGoods.xml">
+      <Link>Layouts\Defs\\EquipParamGoods.xml</Link>
+      <TargetPath>Layouts\Defs\\EquipParamGoods.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EquipParamProtector.xml">
+      <Link>Layouts\Defs\\EquipParamProtector.xml</Link>
+      <TargetPath>Layouts\Defs\\EquipParamProtector.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EquipParamWeapon.xml">
+      <Link>Layouts\Defs\\EquipParamWeapon.xml</Link>
+      <TargetPath>Layouts\Defs\\EquipParamWeapon.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EstusFlaskRecoveryParam.xml">
+      <Link>Layouts\Defs\\EstusFlaskRecoveryParam.xml</Link>
+      <TargetPath>Layouts\Defs\\EstusFlaskRecoveryParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\EventFlagUsageParam.xml">
+      <Link>Layouts\Defs\\EventFlagUsageParam.xml</Link>
+      <TargetPath>Layouts\Defs\\EventFlagUsageParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\FaceParam.xml">
+      <Link>Layouts\Defs\\FaceParam.xml</Link>
+      <TargetPath>Layouts\Defs\\FaceParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\FaceRangeParam.xml">
+      <Link>Layouts\Defs\\FaceRangeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\FaceRangeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\FeTextEffectParam.xml">
+      <Link>Layouts\Defs\\FeTextEffectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\FeTextEffectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\FootSfxParam.xml">
+      <Link>Layouts\Defs\\FootSfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\FootSfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GameAreaParam.xml">
+      <Link>Layouts\Defs\\GameAreaParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GameAreaParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GameInfoParam.xml">
+      <Link>Layouts\Defs\\GameInfoParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GameInfoParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GameSystemCommonParam.xml">
+      <Link>Layouts\Defs\\GameSystemCommonParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GameSystemCommonParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_AAQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_AAQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_AAQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_DecalQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_DecalQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_DecalQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_DOFQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_DOFQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_DOFQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_EffectQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_EffectQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_EffectQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_LightingQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_LightingQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_LightingQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_MotionBlurQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_MotionBlurQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_MotionBlurQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_ReflectionQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_ReflectionQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_ReflectionQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_ShaderQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_ShaderQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_ShaderQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_ShadowQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_ShadowQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_ShadowQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_SSAOQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_SSAOQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_SSAOQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_TextureFilterQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_TextureFilterQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_TextureFilterQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_VolumetricEffectQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_VolumetricEffectQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_VolumetricEffectQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Gconfig_WaterQuality.xml">
+      <Link>Layouts\Defs\\Gconfig_WaterQuality.xml</Link>
+      <TargetPath>Layouts\Defs\\Gconfig_WaterQuality.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GestureParam.xml">
+      <Link>Layouts\Defs\\GestureParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GestureParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GparamGridRegionInfo.xml">
+      <Link>Layouts\Defs\\GparamGridRegionInfo.xml</Link>
+      <TargetPath>Layouts\Defs\\GparamGridRegionInfo.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GparamRefSettingsParam.xml">
+      <Link>Layouts\Defs\\GparamRefSettingsParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GparamRefSettingsParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GraphicsCommonParam.xml">
+      <Link>Layouts\Defs\\GraphicsCommonParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GraphicsCommonParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GraphicsConfig.xml">
+      <Link>Layouts\Defs\\GraphicsConfig.xml</Link>
+      <TargetPath>Layouts\Defs\\GraphicsConfig.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GrassLodRangeParam.xml">
+      <Link>Layouts\Defs\\GrassLodRangeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GrassLodRangeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GrassMapSettings.xml">
+      <Link>Layouts\Defs\\GrassMapSettings.xml</Link>
+      <TargetPath>Layouts\Defs\\GrassMapSettings.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\GrassTypeParam.xml">
+      <Link>Layouts\Defs\\GrassTypeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\GrassTypeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\HitEffectSeParam.xml">
+      <Link>Layouts\Defs\\HitEffectSeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\HitEffectSeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\HitEffectSfxConceptParam.xml">
+      <Link>Layouts\Defs\\HitEffectSfxConceptParam.xml</Link>
+      <TargetPath>Layouts\Defs\\HitEffectSfxConceptParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\HitEffectSfxParam.xml">
+      <Link>Layouts\Defs\\HitEffectSfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\HitEffectSfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\HitMtrlParam.xml">
+      <Link>Layouts\Defs\\HitMtrlParam.xml</Link>
+      <TargetPath>Layouts\Defs\\HitMtrlParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ItemLotParam.xml">
+      <Link>Layouts\Defs\\ItemLotParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ItemLotParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\KeyAssignMenuItemParam.xml">
+      <Link>Layouts\Defs\\KeyAssignMenuItemParam.xml</Link>
+      <TargetPath>Layouts\Defs\\KeyAssignMenuItemParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\KeyAssignParam.xml">
+      <Link>Layouts\Defs\\KeyAssignParam.xml</Link>
+      <TargetPath>Layouts\Defs\\KeyAssignParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\KnockBackParam.xml">
+      <Link>Layouts\Defs\\KnockBackParam.xml</Link>
+      <TargetPath>Layouts\Defs\\KnockBackParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\KnowledgeLoadScreenItemParam.xml">
+      <Link>Layouts\Defs\\KnowledgeLoadScreenItemParam.xml</Link>
+      <TargetPath>Layouts\Defs\\KnowledgeLoadScreenItemParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\LegacyDistantViewPartsReplaceParam.xml">
+      <Link>Layouts\Defs\\LegacyDistantViewPartsReplaceParam.xml</Link>
+      <TargetPath>Layouts\Defs\\LegacyDistantViewPartsReplaceParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\LoadBalancerDrawDistScaleParam.xml">
+      <Link>Layouts\Defs\\LoadBalancerDrawDistScaleParam.xml</Link>
+      <TargetPath>Layouts\Defs\\LoadBalancerDrawDistScaleParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\LoadBalancerNewDrawDistScaleParam.xml">
+      <Link>Layouts\Defs\\LoadBalancerNewDrawDistScaleParam.xml</Link>
+      <TargetPath>Layouts\Defs\\LoadBalancerNewDrawDistScaleParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\LoadBalancerParam.xml">
+      <Link>Layouts\Defs\\LoadBalancerParam.xml</Link>
+      <TargetPath>Layouts\Defs\\LoadBalancerParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\LockCamParam.xml">
+      <Link>Layouts\Defs\\LockCamParam.xml</Link>
+      <TargetPath>Layouts\Defs\\LockCamParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\Magic.xml">
+      <Link>Layouts\Defs\\Magic.xml</Link>
+      <TargetPath>Layouts\Defs\\Magic.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MapDefaultInfoParam.xml">
+      <Link>Layouts\Defs\\MapDefaultInfoParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MapDefaultInfoParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MapGdRegionDrawParam.xml">
+      <Link>Layouts\Defs\\MapGdRegionDrawParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MapGdRegionDrawParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MapGdRegionInfo.xml">
+      <Link>Layouts\Defs\\MapGdRegionInfo.xml</Link>
+      <TargetPath>Layouts\Defs\\MapGdRegionInfo.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MapGridCreateHeightLimitInfo.xml">
+      <Link>Layouts\Defs\\MapGridCreateHeightLimitInfo.xml</Link>
+      <TargetPath>Layouts\Defs\\MapGridCreateHeightLimitInfo.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MapMimicryEstablishmentParam.xml">
+      <Link>Layouts\Defs\\MapMimicryEstablishmentParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MapMimicryEstablishmentParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MapNameTexParam.xml">
+      <Link>Layouts\Defs\\MapNameTexParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MapNameTexParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MapPieceTexParam.xml">
+      <Link>Layouts\Defs\\MapPieceTexParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MapPieceTexParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MaterialExParam.xml">
+      <Link>Layouts\Defs\\MaterialExParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MaterialExParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MenuCommonParam.xml">
+      <Link>Layouts\Defs\\MenuCommonParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MenuCommonParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MenuOffscrRendParam.xml">
+      <Link>Layouts\Defs\\MenuOffscrRendParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MenuOffscrRendParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MenuParamColorTable.xml">
+      <Link>Layouts\Defs\\MenuParamColorTable.xml</Link>
+      <TargetPath>Layouts\Defs\\MenuParamColorTable.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MenuPropertyLayoutParam.xml">
+      <Link>Layouts\Defs\\MenuPropertyLayoutParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MenuPropertyLayoutParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MenuPropertySpecParam.xml">
+      <Link>Layouts\Defs\\MenuPropertySpecParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MenuPropertySpecParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MenuValueTableSpecParam.xml">
+      <Link>Layouts\Defs\\MenuValueTableSpecParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MenuValueTableSpecParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MimicryEstablishmentTexParam.xml">
+      <Link>Layouts\Defs\\MimicryEstablishmentTexParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MimicryEstablishmentTexParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MissileParam.xml">
+      <Link>Layouts\Defs\\MissileParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MissileParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ModelSfxParam.xml">
+      <Link>Layouts\Defs\\ModelSfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ModelSfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MoveParam.xml">
+      <Link>Layouts\Defs\\MoveParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MoveParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MultiEstusFlaskBonusParam.xml">
+      <Link>Layouts\Defs\\MultiEstusFlaskBonusParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MultiEstusFlaskBonusParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MultiPlayCorrectionParam.xml">
+      <Link>Layouts\Defs\\MultiPlayCorrectionParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MultiPlayCorrectionParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\MultiSoulBonusRateParam.xml">
+      <Link>Layouts\Defs\\MultiSoulBonusRateParam.xml</Link>
+      <TargetPath>Layouts\Defs\\MultiSoulBonusRateParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\NetworkAreaParam.xml">
+      <Link>Layouts\Defs\\NetworkAreaParam.xml</Link>
+      <TargetPath>Layouts\Defs\\NetworkAreaParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\NetworkMsgParam.xml">
+      <Link>Layouts\Defs\\NetworkMsgParam.xml</Link>
+      <TargetPath>Layouts\Defs\\NetworkMsgParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\NetworkParam.xml">
+      <Link>Layouts\Defs\\NetworkParam.xml</Link>
+      <TargetPath>Layouts\Defs\\NetworkParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\NpcAiActionParam.xml">
+      <Link>Layouts\Defs\\NpcAiActionParam.xml</Link>
+      <TargetPath>Layouts\Defs\\NpcAiActionParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\NpcAiBehaviorProbabilityParam.xml">
+      <Link>Layouts\Defs\\NpcAiBehaviorProbabilityParam.xml</Link>
+      <TargetPath>Layouts\Defs\\NpcAiBehaviorProbabilityParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\NpcParam.xml">
+      <Link>Layouts\Defs\\NpcParam.xml</Link>
+      <TargetPath>Layouts\Defs\\NpcParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\NpcThinkParam.xml">
+      <Link>Layouts\Defs\\NpcThinkParam.xml</Link>
+      <TargetPath>Layouts\Defs\\NpcThinkParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ObjActParam.xml">
+      <Link>Layouts\Defs\\ObjActParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ObjActParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ObjectMaterialSfxParam.xml">
+      <Link>Layouts\Defs\\ObjectMaterialSfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ObjectMaterialSfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ObjectParam.xml">
+      <Link>Layouts\Defs\\ObjectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ObjectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PartsDrawParam.xml">
+      <Link>Layouts\Defs\\PartsDrawParam.xml</Link>
+      <TargetPath>Layouts\Defs\\PartsDrawParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PerformanceCheckParam.xml">
+      <Link>Layouts\Defs\\PerformanceCheckParam.xml</Link>
+      <TargetPath>Layouts\Defs\\PerformanceCheckParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PhantomParam.xml">
+      <Link>Layouts\Defs\\PhantomParam.xml</Link>
+      <TargetPath>Layouts\Defs\\PhantomParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PlayerCommonParam.xml">
+      <Link>Layouts\Defs\\PlayerCommonParam.xml</Link>
+      <TargetPath>Layouts\Defs\\PlayerCommonParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PlayRegionParam.xml">
+      <Link>Layouts\Defs\\PlayRegionParam.xml</Link>
+      <TargetPath>Layouts\Defs\\PlayRegionParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PostureControlParam_Gender.xml">
+      <Link>Layouts\Defs\\PostureControlParam_Gender.xml</Link>
+      <TargetPath>Layouts\Defs\\PostureControlParam_Gender.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PostureControlParam_Pro.xml">
+      <Link>Layouts\Defs\\PostureControlParam_Pro.xml</Link>
+      <TargetPath>Layouts\Defs\\PostureControlParam_Pro.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PostureControlParam_WepLeft.xml">
+      <Link>Layouts\Defs\\PostureControlParam_WepLeft.xml</Link>
+      <TargetPath>Layouts\Defs\\PostureControlParam_WepLeft.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\PostureControlParam_WepRight.xml">
+      <Link>Layouts\Defs\\PostureControlParam_WepRight.xml</Link>
+      <TargetPath>Layouts\Defs\\PostureControlParam_WepRight.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\RandomAppearEditParam.xml">
+      <Link>Layouts\Defs\\RandomAppearEditParam.xml</Link>
+      <TargetPath>Layouts\Defs\\RandomAppearEditParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\RandomAppearParam.xml">
+      <Link>Layouts\Defs\\RandomAppearParam.xml</Link>
+      <TargetPath>Layouts\Defs\\RandomAppearParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ReinforceParamProtector.xml">
+      <Link>Layouts\Defs\\ReinforceParamProtector.xml</Link>
+      <TargetPath>Layouts\Defs\\ReinforceParamProtector.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ReinforceParamWeapon.xml">
+      <Link>Layouts\Defs\\ReinforceParamWeapon.xml</Link>
+      <TargetPath>Layouts\Defs\\ReinforceParamWeapon.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ResistCorrectParam.xml">
+      <Link>Layouts\Defs\\ResistCorrectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ResistCorrectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ReverbAuxSendBusParam.xml">
+      <Link>Layouts\Defs\\ReverbAuxSendBusParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ReverbAuxSendBusParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\RideParam.xml">
+      <Link>Layouts\Defs\\RideParam.xml</Link>
+      <TargetPath>Layouts\Defs\\RideParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\RoleParam.xml">
+      <Link>Layouts\Defs\\RoleParam.xml</Link>
+      <TargetPath>Layouts\Defs\\RoleParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\RollingObjLotParam.xml">
+      <Link>Layouts\Defs\\RollingObjLotParam.xml</Link>
+      <TargetPath>Layouts\Defs\\RollingObjLotParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\RuntimeBoneControlParam.xml">
+      <Link>Layouts\Defs\\RuntimeBoneControlParam.xml</Link>
+      <TargetPath>Layouts\Defs\\RuntimeBoneControlParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SeActivationRangeParam.xml">
+      <Link>Layouts\Defs\\SeActivationRangeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SeActivationRangeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SeMaterialConvertParam.xml">
+      <Link>Layouts\Defs\\SeMaterialConvertParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SeMaterialConvertParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SfxBlockResShareParam.xml">
+      <Link>Layouts\Defs\\SfxBlockResShareParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SfxBlockResShareParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ShopLineupParam_Recipe.xml">
+      <Link>Layouts\Defs\\ShopLineupParam_Recipe.xml</Link>
+      <TargetPath>Layouts\Defs\\ShopLineupParam_Recipe.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SignPuddleParam.xml">
+      <Link>Layouts\Defs\\SignPuddleParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SignPuddleParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundAssetSoundObjEnableDistParam.xml">
+      <Link>Layouts\Defs\\SoundAssetSoundObjEnableDistParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundAssetSoundObjEnableDistParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundAutoEnvSoundGroupParam.xml">
+      <Link>Layouts\Defs\\SoundAutoEnvSoundGroupParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundAutoEnvSoundGroupParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundAutoReverbEvaluationDistParam.xml">
+      <Link>Layouts\Defs\\SoundAutoReverbEvaluationDistParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundAutoReverbEvaluationDistParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundAutoReverbSelectParam.xml">
+      <Link>Layouts\Defs\\SoundAutoReverbSelectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundAutoReverbSelectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundChrPhysicsSeParam.xml">
+      <Link>Layouts\Defs\\SoundChrPhysicsSeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundChrPhysicsSeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundCommonIngameParam.xml">
+      <Link>Layouts\Defs\\SoundCommonIngameParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundCommonIngameParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundCommonSystemParam.xml">
+      <Link>Layouts\Defs\\SoundCommonSystemParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundCommonSystemParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SoundCutsceneParam.xml">
+      <Link>Layouts\Defs\\SoundCutsceneParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SoundCutsceneParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SpeedtreeParam.xml">
+      <Link>Layouts\Defs\\SpeedtreeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SpeedtreeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SpEffectParam.xml">
+      <Link>Layouts\Defs\\SpEffectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SpEffectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SpEffectSetParam.xml">
+      <Link>Layouts\Defs\\SpEffectSetParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SpEffectSetParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SpEffectVfxParam.xml">
+      <Link>Layouts\Defs\\SpEffectVfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SpEffectVfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\SwordArtsParam.xml">
+      <Link>Layouts\Defs\\SwordArtsParam.xml</Link>
+      <TargetPath>Layouts\Defs\\SwordArtsParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\TalkParam.xml">
+      <Link>Layouts\Defs\\TalkParam.xml</Link>
+      <TargetPath>Layouts\Defs\\TalkParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ThrowDirectionSfxParam.xml">
+      <Link>Layouts\Defs\\ThrowDirectionSfxParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ThrowDirectionSfxParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ThrowParam.xml">
+      <Link>Layouts\Defs\\ThrowParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ThrowParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\ToughnessParam.xml">
+      <Link>Layouts\Defs\\ToughnessParam.xml</Link>
+      <TargetPath>Layouts\Defs\\ToughnessParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\TutorialParam.xml">
+      <Link>Layouts\Defs\\TutorialParam.xml</Link>
+      <TargetPath>Layouts\Defs\\TutorialParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WaypointParam.xml">
+      <Link>Layouts\Defs\\WaypointParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WaypointParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WeatherAssetCreateParam.xml">
+      <Link>Layouts\Defs\\WeatherAssetCreateParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WeatherAssetCreateParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WeatherAssetReplaceParam.xml">
+      <Link>Layouts\Defs\\WeatherAssetReplaceParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WeatherAssetReplaceParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WeatherLotParam.xml">
+      <Link>Layouts\Defs\\WeatherLotParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WeatherLotParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WeatherLotTexParam.xml">
+      <Link>Layouts\Defs\\WeatherLotTexParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WeatherLotTexParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WeatherParam.xml">
+      <Link>Layouts\Defs\\WeatherParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WeatherParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WepAbsorpPosParam.xml">
+      <Link>Layouts\Defs\\WepAbsorpPosParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WepAbsorpPosParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WetAspectParam.xml">
+      <Link>Layouts\Defs\\WetAspectParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WetAspectParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WhiteSignCoolTimeParam.xml">
+      <Link>Layouts\Defs\\WhiteSignCoolTimeParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WhiteSignCoolTimeParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WorldMapLegacyConvParam.xml">
+      <Link>Layouts\Defs\\WorldMapLegacyConvParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WorldMapLegacyConvParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WorldMapPieceParam.xml">
+      <Link>Layouts\Defs\\WorldMapPieceParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WorldMapPieceParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WorldMapPlaceNameParam.xml">
+      <Link>Layouts\Defs\\WorldMapPlaceNameParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WorldMapPlaceNameParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WorldMapPointParam.xml">
+      <Link>Layouts\Defs\\WorldMapPointParam.xml</Link>
+      <TargetPath>Layouts\Defs\\WorldMapPointParam.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Defs\WwiseValueToStrConvertParamFormat.xml">
+      <Link>Layouts\Defs\\WwiseValueToStrConvertParamFormat.xml</Link>
+      <TargetPath>Layouts\Defs\\WwiseValueToStrConvertParamFormat.xml</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Names\EquipParamAccessory.txt">
+      <Link>Layouts\Names\\EquipParamAccessory.txt</Link>
+      <TargetPath>Layouts\Names\\EquipParamAccessory.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Names\EquipParamGem.txt">
+      <Link>Layouts\Names\\EquipParamGem.txt</Link>
+      <TargetPath>Layouts\Names\\EquipParamGem.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Names\EquipParamGoods.txt">
+      <Link>Layouts\Names\\EquipParamGoods.txt</Link>
+      <TargetPath>Layouts\Names\\EquipParamGoods.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Names\EquipParamProtector.txt">
+      <Link>Layouts\Names\\EquipParamProtector.txt</Link>
+      <TargetPath>Layouts\Names\\EquipParamProtector.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Names\EquipParamWeapon.txt">
+      <Link>Layouts\Names\\EquipParamWeapon.txt</Link>
+      <TargetPath>Layouts\Names\\EquipParamWeapon.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Names\SwordArtsParam.txt">
+      <Link>Layouts\Names\\SwordArtsParam.txt</Link>
+      <TargetPath>Layouts\Names\\SwordArtsParam.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Tdfs\GAITEM_CATEGORY.tdf">
+      <Link>Layouts\Tdfs\\GAITEM_CATEGORY.tdf</Link>
+      <TargetPath>Layouts\Tdfs\\GAITEM_CATEGORY.tdf</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Tdfs\ITEMLOT_ITEMCATEGORY.tdf">
+      <Link>Layouts\Tdfs\\ITEMLOT_ITEMCATEGORY.tdf</Link>
+      <TargetPath>Layouts\Tdfs\\ITEMLOT_ITEMCATEGORY.tdf</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Layouts\Tdfs\SHOP_LINEUP_EQUIPTYPE.tdf">
+      <Link>Layouts\Tdfs\\SHOP_LINEUP_EQUIPTYPE.tdf</Link>
+      <TargetPath>Layouts\Tdfs\\SHOP_LINEUP_EQUIPTYPE.tdf</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FodyWeavers.xml" />
+    <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SoulsFormats\SoulsFormats\SoulsFormats.csproj">
+      <Project>{298ea026-e167-4ba9-a77c-e989cd45d535}</Project>
+      <Name>SoulsFormats</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Fody.3.2.12\build\Fody.targets" Condition="Exists('..\packages\Fody.3.2.12\build\Fody.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Fody.3.2.12\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.3.2.12\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.3.1.6\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.3.1.6\build\Costura.Fody.props'))" />
+  </Target>
+  <Target Name="PostBuildMacros">
+    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+      <Output TaskParameter="Assemblies" ItemName="Targets" />
+    </GetAssemblyIdentity>
+    <ItemGroup>
+      <VersionNumber Include="@(Targets->'%(Version)')" />
+    </ItemGroup>
+  </Target>
+  <PropertyGroup>
+    <PostBuildEventDependsOn>
+      $(PostBuildEventDependsOn);
+      PostBuildMacros;
+    </PostBuildEventDependsOn>
+    <PostBuildEvent>set "output=$(TargetDir)Irregulator @(VersionNumber)"
+if "$(ConfigurationName)" == "Release" (
+  md "%25output%25"
+  del "%25output%25"
+  xcopy "$(SolutionDir)dist\*.*" "%25output%25" /Y /I /E
+  copy "$(TargetPath)" "%25output%25\"
+  copy "$(TargetPath).config" "%25output%25\"
+  copy "$(TargetDir)$(TargetName).pdb" "%25output%25\"
+)</PostBuildEvent>
+  </PropertyGroup>
+</Project>
