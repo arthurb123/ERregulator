@@ -2,8 +2,8 @@
 Simple tool for randomization of game parameters in Elden Ring, based on JKAnderson's [Irregulator](https://github.com/JKAnderson/Irregulator) for DS3.
 
 ## Usage
-The usage of this application requires .NET Framework 4.7.2 to work.
-As there is no official release yet, please refer to [Building from source](#building-from-source) on how to create an executable.
+The usage of this application requires .NET Framework 4.7.2 to work.<br>
+Please download the latest release from the [Releases](https://github.com/arthurb123/ERregulator/releases) page, or refer to [Building from source](#building-from-source) on how to create an executable yourself.
 1. Run the ERregulator app and make sure the game directory is correct before proceeding.
 2. Pick your options, click Randomize and wait for the process to finish.
 3. Your game is now using modified parameters.
