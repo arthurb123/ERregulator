@@ -1,5 +1,6 @@
 # ERregulator
-Simple tool for randomization of game parameters in Elden Ring, based on JKAnderson's [Irregulator](https://github.com/JKAnderson/Irregulator) for DS3.
+Simple tool for randomization of game parameters in Elden Ring, based on JKAnderson's [Irregulator](https://github.com/JKAnderson/Irregulator) for DS3.<br>
+<img alt="Interface Screenshot" src="interface.png" width=35% height=35%>
 
 ## Usage
 The usage of this application requires .NET Framework 4.7.2 to work.<br>
