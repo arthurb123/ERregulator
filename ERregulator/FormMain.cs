@@ -1,11 +1,9 @@
-﻿using Semver;
-using SoulsFormats;
+﻿using SoulsFormats;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Media;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,10 +11,8 @@ namespace ERregulator
 {
     public partial class FormMain : Form
     {
-        //private const string UPDATE_LINK = "https://www.nexusmods.com/darksouls3/mods/298?tab=files";
         private const string REGULATION_FILE_NAME = "regulation.bin";
         private static Properties.Settings settings = Properties.Settings.Default;
-
         private Progress<string> progress;
 
         public FormMain()
