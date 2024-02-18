@@ -34,34 +34,13 @@ namespace ERregulator
             if (settings.WindowMaximized)
                 WindowState = FormWindowState.Maximized;
 
-            //Octokit.GitHubClient gitHubClient = new Octokit.GitHubClient(new Octokit.ProductHeaderValue("Irregulator"));
-            //gitHubClient.SetRequestTimeout(new TimeSpan(0, 2, 0));
-            //try
-            //{
-            //    Octokit.Release release = await gitHubClient.Repository.Release.GetLatest("JKAnderson", "Irregulator");
-            //    if (SemVersion.Parse(release.TagName) > Application.ProductVersion)
-            //    {
-            //        lblUpdate.Visible = false;
-            //        LinkLabel.Link link = new LinkLabel.Link();
-            //        link.LinkData = UPDATE_LINK;
-            //        llbUpdate.Links.Add(link);
-            //        llbUpdate.Visible = true;
-            //    }
-            //    else
-            //    {
-            //        lblUpdate.Text = "App up to date";
-            //    }
-            //}
-            //catch (Exception ex) when (ex is HttpRequestException || ex is Octokit.ApiException || ex is ArgumentException)
-            //{
-            //    lblUpdate.Text = "Update status unknown";
-            //}
-        }
+            weaponGroupBox.Enabled = cbxWeapons.Checked;
+            armorGroupBox.Enabled = cbxArmor.Checked;
+            talismanGroupBox.Enabled = cbxRings.Checked;
+            projectilesGroupBox.Enabled = cbxBullets.Checked;
 
-        //private void llbUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        //{
-        //    Process.Start(e.Link.LinkData.ToString());
-        //}
+            weaponSeperateShields.Enabled = weaponKeepCategories.Checked;
+        }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -194,13 +173,29 @@ namespace ERregulator
                 ERregulator irreg = new ERregulator(txtSeed.Text);
                 irreg.Randomize(
                     paramDict,
-                    cbxArmor.Checked, armorRandomizeWeight.Checked,
-                    cbxWeapons.Checked, weaponRandomizeWeight.Checked, weaponKeepCategories.Checked,
-                    cbxRings.Checked, ringsRandomizeWeight.Checked,
+                    // Armor
+                    cbxArmor.Checked, 
+                        armorRandomizeWeight.Checked,
+                    // Weapons
+                    cbxWeapons.Checked, 
+                        weaponRandomizeWeight.Checked, 
+                        weaponRandomizeAttributes.Checked,
+                        weaponKeepCategories.Checked, weaponSeperateShields.Checked,
+                        weaponKeepMovesets.Checked,
+                        weaponKeepArtsOfWar.Checked,
+                    // Talismans
+                    cbxRings.Checked, 
+                        ringsRandomizeWeight.Checked,
+                    // Goods
                     cbxGoods.Checked,
+                    // Spells
                     cbxSpells.Checked,
-                    cbxBullets.Checked, cbxBulletsPlus.Checked, 
+                    // Projectiles
+                    cbxBullets.Checked, 
+                        cbxBulletsPlus.Checked, 
+                    // Humans
                     cbxHumans.Checked, 
+                    // Other
                     cbxOther.Checked
                 );
             }
@@ -250,6 +245,31 @@ namespace ERregulator
             btnRestore.Enabled = enable;
             btnRandomize.Enabled = enable;
             gbxOptions.Enabled = enable;
+        }
+
+        private void cbxBullets_CheckedChanged(object sender, EventArgs e)
+        {
+            projectilesGroupBox.Enabled = cbxBullets.Checked;
+        }
+
+        private void cbxRings_CheckedChanged(object sender, EventArgs e)
+        {
+            talismanGroupBox.Enabled = cbxRings.Checked;
+        }
+
+        private void cbxWeapons_CheckedChanged(object sender, EventArgs e)
+        {
+            weaponGroupBox.Enabled = cbxWeapons.Checked;
+        }
+
+        private void cbxArmor_CheckedChanged(object sender, EventArgs e)
+        {
+            armorGroupBox.Enabled = cbxArmor.Checked;
+        }
+
+        private void weaponKeepCategories_CheckedChanged(object sender, EventArgs e)
+        {
+            weaponSeperateShields.Enabled = weaponKeepCategories.Checked;
         }
     }
 }

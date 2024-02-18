@@ -12,7 +12,7 @@ namespace ERregulator.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.8.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -200,6 +200,102 @@ namespace ERregulator.Properties {
             }
             set {
                 this["BulletsPlus"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WeaponRandomizeWeight {
+            get {
+                return ((bool)(this["WeaponRandomizeWeight"]));
+            }
+            set {
+                this["WeaponRandomizeWeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool WeaponRandomizeAttributes {
+            get {
+                return ((bool)(this["WeaponRandomizeAttributes"]));
+            }
+            set {
+                this["WeaponRandomizeAttributes"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WeaponKeepCategories {
+            get {
+                return ((bool)(this["WeaponKeepCategories"]));
+            }
+            set {
+                this["WeaponKeepCategories"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WeaponSeperateShields {
+            get {
+                return ((bool)(this["WeaponSeperateShields"]));
+            }
+            set {
+                this["WeaponSeperateShields"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WeaponKeepMovesets {
+            get {
+                return ((bool)(this["WeaponKeepMovesets"]));
+            }
+            set {
+                this["WeaponKeepMovesets"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool WeaponKeepArtsOfWar {
+            get {
+                return ((bool)(this["WeaponKeepArtsOfWar"]));
+            }
+            set {
+                this["WeaponKeepArtsOfWar"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ArmorRandomizeWeight {
+            get {
+                return ((bool)(this["ArmorRandomizeWeight"]));
+            }
+            set {
+                this["ArmorRandomizeWeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TalismansRandomizeWeight {
+            get {
+                return ((bool)(this["TalismansRandomizeWeight"]));
+            }
+            set {
+                this["TalismansRandomizeWeight"] = value;
             }
         }
     }

@@ -18,14 +18,21 @@ namespace ERregulator
         }
 
         public void Randomize(
-            Dictionary<string, 
-            PARAM> paramDict,
-            bool doArmor, bool randomizeArmorWeight,
-            bool doWeapons, bool randomizeWeaponsWeight, bool keepWeaponCategories,
-            bool doRings, bool randomizeRingsWeight,
+            Dictionary<string, PARAM> paramDict,
+            bool doArmor, 
+                bool randomizeArmorWeight,
+            bool doWeapons, 
+                bool randomizeWeaponsWeight,
+                bool randomizeWeaponAttributes,
+                bool keepWeaponCategories, bool seperateShieldsFromMeleeWeapons,
+                bool keepWeaponMovesets,
+                bool keepWeaponArtsOfWar,
+            bool doRings, 
+                bool randomizeRingsWeight,
             bool doGoods, 
             bool doSpells,
-            bool doBullets, bool bulletsPlus, 
+            bool doBullets, 
+                bool bulletsPlus, 
             bool doHumans, 
             bool doOthers
         )
@@ -153,9 +160,11 @@ namespace ERregulator
                 // Get the melee (including shields), ranged and magic weapons seperately;
                 // Also skip the unarmed weapon.
                 PARAM param = paramDict["EquipParamWeapon"];
-                var meleeWeapons = param.Rows.Where(row => row.ID > 110000 && row.ID <= 32301200);
-                var magicWeapons = param.Rows.Where(row => row.ID > 32301200 && row.ID <= 34090000);
-                var rangedWeapons = param.Rows.Where(row => row.ID > 34090000);
+                IEnumerable<PARAM.Row> weaponsExceptUnarmed = param.Rows.Where(row => row.ID > 110000);
+                IEnumerable<PARAM.Row> meleeWeapons = param.Rows.Where(row => row.ID > 110000 && row.ID <= 24070000);
+                IEnumerable<PARAM.Row> shieldMeleeWeapons = param.Rows.Where(row => row.ID >= 30000000 && row.ID <= 32301200);
+                IEnumerable<PARAM.Row> magicWeapons = param.Rows.Where(row => row.ID > 32301200 && row.ID <= 34090000);
+                IEnumerable<PARAM.Row> rangedWeapons = param.Rows.Where(row => row.ID > 34090000);
                 RandomizeSome(param.Rows, false,
                     "correctStrength", 
                     "correctAgility", 
@@ -209,32 +218,63 @@ namespace ERregulator
                     "staminaGuardDef"
                 );
 
-                if (randomizeWeaponsWeight)
-                    RandomizeSome(param.Rows, false, "weight");
-
-                // Specific category randomization, this
-                // way melee weapons won't act like ranged
-                // or magic weapons and vice versa
-                string[] weaponParameters = new string[]
+                // Setup specific weapon parameters for filtering purposes
+                string[] weaponAttributeParameters = new string[2]
                 {
-                    "wepmotionCategory",
-                    "guardmotionCategory",
                     "spAtkcategory",
-                    "spAttribute",
+                    "spAttribute"
+                };
+                string[] weaponMovesetParameters = new string[4] { 
+                    "wepmotionCategory",
                     "wepmotionOneHandId",
                     "wepmotionBothHandId",
-                    "swordArtsParamId",
-                    "wepSeIdOffset"
+                    "guardmotionCategory"
+                };
+                string[] weaponArtsOfWarParameters = new string[1] {
+                    "swordArtsParamId"
+                };
+                string[] weaponWeightParameters = new string[1] {
+                    "weight"
                 };
 
+                // Setup total weapon parameter list based on filters
+                List<string> weaponParametersList = new List<string>()
+                {
+                    "wepSeIdOffset"
+                };
+                if (randomizeWeaponsWeight)
+                    weaponParametersList.AddRange(weaponWeightParameters);
+                if (randomizeWeaponAttributes)
+                    weaponParametersList.AddRange(weaponAttributeParameters);
+                if (!keepWeaponMovesets)
+                    weaponParametersList.AddRange(weaponMovesetParameters);
+                if (!keepWeaponArtsOfWar)
+                    weaponParametersList.AddRange(weaponArtsOfWarParameters);
+                string[] weaponParameters = weaponParametersList.ToArray();
+
+                // Randomize based on if the categories should be kept or not
                 if (keepWeaponCategories)
                 {
-                    RandomizeSome(meleeWeapons, false, weaponParameters);
+                    if (seperateShieldsFromMeleeWeapons)
+                    {
+                        RandomizeSome(meleeWeapons, false, weaponParameters);
+                        RandomizeSome(shieldMeleeWeapons, false, weaponParameters);
+                    }
+                    else
+                    {
+                        IEnumerable<PARAM.Row> allMeleeWeapons = meleeWeapons.Concat(shieldMeleeWeapons);
+                        RandomizeSome(allMeleeWeapons, false, weaponParameters);
+                    }
+
                     RandomizeSome(rangedWeapons, false, weaponParameters);
                     RandomizeSome(magicWeapons, false, weaponParameters);
                 }
                 else
-                    RandomizeSome(param.Rows, false, weaponParameters);
+                    RandomizeSome(weaponsExceptUnarmed, false, weaponParameters);
+
+                // Randomize arts of war
+                if (!keepWeaponArtsOfWar)
+                    RandomizeAll(paramDict["SwordArtsParam"].Rows);
             }
 
             if (doSpells)
@@ -314,7 +354,6 @@ namespace ERregulator
 
                 RandomizeAll(paramDict["DecalParam"].Rows);
                 RandomizeAll(paramDict["HitEffectSfxConceptParam"].Rows);
-                RandomizeAll(paramDict["SwordArtsParam"].Rows);
                 RandomizeAll(paramDict["FootSfxParam"].Rows);
                 RandomizeAll(paramDict["PhantomParam"].Rows);
                 RandomizeAll(paramDict["WetAspectParam"].Rows);
