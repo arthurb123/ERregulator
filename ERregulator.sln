@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERregulator", "ERregulator\ERregulator.csproj", "{9AFD144B-9E2A-42BB-936D-2B2401CBD495}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulsFormats", "SoulsFormats\SoulsFormats\SoulsFormats.csproj", "{298EA026-E167-4BA9-A77C-E989CD45D535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoulsFormats", "SoulsFormatsNEXT\SoulsFormats\SoulsFormats.csproj", "{FAD7BE81-7817-4ACD-8DA4-631596C7F930}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{9AFD144B-9E2A-42BB-936D-2B2401CBD495}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9AFD144B-9E2A-42BB-936D-2B2401CBD495}.Release|x64.ActiveCfg = Release|Any CPU
 		{9AFD144B-9E2A-42BB-936D-2B2401CBD495}.Release|x64.Build.0 = Release|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Debug|x64.Build.0 = Debug|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Release|Any CPU.Build.0 = Release|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Release|x64.ActiveCfg = Release|Any CPU
-		{298EA026-E167-4BA9-A77C-E989CD45D535}.Release|x64.Build.0 = Release|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Debug|x64.Build.0 = Debug|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Release|x64.ActiveCfg = Release|Any CPU
+		{FAD7BE81-7817-4ACD-8DA4-631596C7F930}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

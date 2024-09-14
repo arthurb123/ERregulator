@@ -143,6 +143,7 @@ namespace ERregulator
                         PARAM param = PARAM.Read(f.Bytes);
                         string paramFileName = Path.GetFileNameWithoutExtension(f.Name);
                         string layoutPath = Path.Combine("Layouts", "Defs", $"{paramFileName}.xml");
+                        progress.Report($"Loading: {paramFileName}");
                         if (!File.Exists(layoutPath))
                         {
                             Debug.WriteLine($"Could not load param layout with name '{paramFileName}', skipping.");
@@ -157,7 +158,7 @@ namespace ERregulator
             }
             catch (Exception ex)
             {
-                progress.Report("Aborted.");
+                //progress.Report("Aborted.");
                 ShowError($"Failed to load regulation file:\n{regPath}\n\n{ex}");
                 return;
             }

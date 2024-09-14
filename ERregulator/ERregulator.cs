@@ -78,8 +78,10 @@ namespace ERregulator
                 int ceruleanFlaskEnd = 1075;
                 int wondrousFlaskStart = 250;
                 int wondrousFlaskEnd = 251;
-                int spectralSteedWhistle = 130;
                 int spiritCallingBell = 8158;
+                // There exist two entries for the spectral steed
+                // whistle, let's just exclude both of them
+                int[] spectralSteedWhistles = new int[] { 130, 181 };
                 var usable = param.Rows.Where(
                     row =>
                        !(row.ID >= ceruleanFlaskStart
@@ -88,7 +90,7 @@ namespace ERregulator
                     && !(row.ID >= wondrousFlaskStart
                     &&   row.ID <= wondrousFlaskEnd)
 
-                    &&   row.ID != spectralSteedWhistle
+                    &&  !spectralSteedWhistles.Any((id) => id == row.ID)
                     &&   row.ID != spiritCallingBell
                 );
 
@@ -108,7 +110,7 @@ namespace ERregulator
             if (doArmor)
             {
                 PARAM param = paramDict["EquipParamProtector"];
-                var valid = param.Rows.Where(row => row.ID >= 1000000);
+                var valid = param.Rows.Where(row => row.ID >= 40000);
                 RandomizeSome(valid, false,
                     "residentSpEffectId", 
                     "residentSpEffectId2", 
@@ -160,11 +162,11 @@ namespace ERregulator
                 // Get the melee (including shields), ranged and magic weapons seperately;
                 // Also skip the unarmed weapon.
                 PARAM param = paramDict["EquipParamWeapon"];
-                IEnumerable<PARAM.Row> weaponsExceptUnarmed = param.Rows.Where(row => row.ID > 110000);
-                IEnumerable<PARAM.Row> meleeWeapons = param.Rows.Where(row => row.ID > 110000 && row.ID <= 24070000);
-                IEnumerable<PARAM.Row> shieldMeleeWeapons = param.Rows.Where(row => row.ID >= 30000000 && row.ID <= 32301200);
-                IEnumerable<PARAM.Row> magicWeapons = param.Rows.Where(row => row.ID > 32301200 && row.ID <= 34090000);
-                IEnumerable<PARAM.Row> rangedWeapons = param.Rows.Where(row => row.ID > 34090000);
+                IEnumerable<PARAM.Row> weaponsExceptUnarmed = param.Rows.Where(row => row.ID >  110000);
+                IEnumerable<PARAM.Row> meleeWeapons         = param.Rows.Where(row => row.ID >  110000   && row.ID <= 24510000);
+                IEnumerable<PARAM.Row> shieldMeleeWeapons   = param.Rows.Where(row => row.ID >= 30000000 && row.ID <= 32520000);
+                IEnumerable<PARAM.Row> magicWeapons         = param.Rows.Where(row => row.ID >= 33000000 && row.ID <= 34520000);
+                IEnumerable<PARAM.Row> rangedWeapons        = param.Rows.Where(row => row.ID >= 40000000);
                 RandomizeSome(param.Rows, false,
                     "correctStrength", 
                     "correctAgility", 
