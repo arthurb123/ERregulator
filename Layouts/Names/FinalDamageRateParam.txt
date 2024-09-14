@@ -1,0 +1,322 @@
+0 Default
+1 [Old] Dagger - Paired Jumping
+20 Straight Sword - Crits
+21 [Old] Straight Sword - Paired Jumping
+41 [Old] Colossal Sword - Paired Jumping
+50 Thrusting Sword - Crits
+51 [Old] Thrusting Sword - Paired Jumping
+60 Heavy Thrusting Sword - Crits
+61 [Old] Heavy Thrusting Sword - Paired Jumping
+70 Curved Sword - Crits
+71 [Old] Curved Sword - Paired Jumping
+90 Katana - Crits
+91 [Old] Katana - Paired Jumping
+100 Twinblade - Crits
+101 [Old] Twinblade - Paired Jumping
+110 Axe - Crits
+111 [Old] Axe - Paired Jumping
+160 Spear - Crits
+161 [Old] Spear - Paired Jumping
+231 [Old] Colossal Weapon - Paired Jumping
+10000 [AoW] Default
+10002 [AoW] Vyke's War Spear - Frenzy Flame Thrust
+10004 [AoW] Mohgwyn's Sacred Spear - Bloodboon Ritual
+10205 [AoW] Lifesteal Fist
+20000 [Spell] Default
+20001 [Incant] Default - Dragon Breath
+24020 [Sorcery] Glintstone Cometshard - Charged
+24021 [Sorcery] Comet - Charged
+24080 [Sorcery] Cannon of Haima
+24100 [Sorcery] Shatter Earth | Rock Blaster
+24120 [Sorcery] Gavel of Haima
+24300 [Sorcery] Greatblade Phalanx
+24360 [Sorcery] Rennala's Full Moon
+24361 [Sorcery] Ranni's Dark Moon
+24370 [Sorcery] Magic Downpour
+24380 [Sorcery] Loretta's Greatbow
+24381 [Sorcery] Loretta's Mastery
+24390 [Sorcery] Magic Glintblade - Charged
+24410 [Sorcery] Zamor Ice Storm
+24430 [Sorcery] Carian Greatsword
+24431 [Sorcery] Adula's Moonblade
+24440 [Sorcery] Carian Slicer
+24450 [Sorcery] Carian Piercer
+24500 [Sorcery] Shattering Crystal
+24620 [Sorcery] Night Comet - Charged
+24700 [Sorcery] Meteorite
+24701 [Sorcery] Meteorite of Astel
+24710 [Sorcery] Rock Sling
+24720 [Sorcery] Gravity Well - Charged
+24800 [Sorcery] Magma Shot
+24820 [Sorcery] Roiling Magma
+24910 [Sorcery] Briars of Punishment
+25010 [Sorcery] Explosive Ghostflame
+25100 [Sorcery] Oracle Bubbles
+25101 [Sorcery] Great Oracular Bubble
+26000 [Incant] Catch Flame | O, Flame!
+26001 [Incant] Flame Sling - Charged
+26020 [Incant] Flame, Fall Upon Them
+26100 [Incant] Giantsflame Take Thee
+26110 [Incant] Flame of the Fell God
+26210 [Incant] Black Flame - Charged
+26230 [Incant] Scouring Black Flame - Charged
+26240 [Incant] Noble Presence
+26300 [Incant] Bloodflame Talons
+26400 [Incant] Rejection
+26410 [Incant] Wrath of Gold
+26710 [Incant] Radagon's Rings of Light
+26810 [Incant] Stone of Gurranq
+26820 [Incant] Beast Claw
+26830 [Incant] Gurranq's Beast Claw
+26900 [Incant] Lightning Spear - Charged
+26940 [Incant] Ancient Dragons' Lightning Spear
+26941 [Incant] Fortissax's Lightning Spear
+26950 [Incant] Lansseax's Glaive
+27010 [Incant] Magma Breath | Theodorix's Magma
+27050 [Incant] Placidusax's Ruin
+27060 [Incant] Dragonclaw
+27080 [Incant] Dragonmaw
+27090 [Incant] Greyoll's Roar
+27240 [Incant] Scarlet Aeonia
+27300 [Incant] Inescapable Frenzy
+27320 [Incant] Frenzied Burst - Charged
+27500 [Incant] Aspects of the Crucible: Tail
+27510 [Incant] Aspects of the Crucible: Horns
+27530 [Incant] Black Blade
+30000 [AoW] Sacred Relic Sword - Wave of Gold
+30001 [AoW] Sacred Relic Sword - Wave of Gold
+30002 [AoW] Sacred Relic Sword - Wave of Gold
+30003 [AoW] Sacred Relic Sword - Wave of Gold
+30010 [AoW] Morgott's Cursed Sword - Cursed-Blood Slice
+100000 Dagger - Default
+100010 Dagger - Subsequent R1s
+100100 Dagger - R2s
+100105 Dagger - Charged R2s
+100800 Dagger (Paired) - Neutral L1s
+100805 Dagger (Paired) - Subsequent Hits L1s
+100860 Dagger (Paired) - Rolling/Backstep L1s
+100890 Dagger (Paired) - Jumping L1s
+200000 Straight Sword - Default
+200010 Straight Sword - Subsequent R1s
+200100 Straight Sword - R2s
+200105 Straight Sword - Charged R2s
+200800 Straight Sword (Paired) - Low SaRate
+200805 Straight Sword (Paired) - High SaRate
+200860 Straight Sword (Paired) - Mid SaRate
+200890 Straight Sword (Paired) - Jumping L1s
+300000 Greatsword - Default
+300010 Greatsword - Subsequent R1s
+300100 Greatsword - R2s
+300105 Greatsword - Charged R2s
+300800 Greatsword (Paired) - Low SaRate
+300805 Greatsword (Paired) - High SaRate
+300860 Greatsword (Paired) - Mid SaRate
+300890 Greatsword (Paired) - Jumping L1s
+400000 Colossal Sword - Default
+400010 Colossal Sword - Subsequent R1s
+400100 Colossal Sword - R2s
+400105 Colossal Sword - Charged R2s
+400800 Colossal Sword (Paired) - Low SaRate
+400805 Colossal Sword (Paired) - High SaRate
+400860 Colossal Sword (Paired) - Mid SaRate
+400890 Colossal Sword (Paired) - Jumping L1s
+500000 Thrusting Sword - Default
+500010 Thrusting Sword - Subsequent R1s
+500100 Thrusting Sword - R2s
+500105 Thrusting Sword - Charged R2s
+500800 Thrusting Sword (Paired) - Low SaRate
+500805 Thrusting Sword (Paired) - High SaRate
+500860 Thrusting Sword (Paired) - Mid SaRate
+500890 Thrusting Sword (Paired) - Jumping L1s
+600000 Heavy Thrusting Sword - Default
+600010 Heavy Thrusting Sword - Subsequent R1s
+600100 Heavy Thrusting Sword - R2s
+600105 Heavy Thrusting Sword - Charged R2s
+600800 Heavy Thrusting Sword (Paired) - Low SaRate
+600805 Heavy Thrusting Sword (Paired) - High SaRate
+600860 Heavy Thrusting Sword (Paired) - Mid SaRate
+600890 Heavy Thrusting Sword (Paired) - Jumping L1s
+700000 Curved Sword - Default
+700010 Curved Sword - Subsequent R1s
+700100 Curved Sword - R2s
+700105 Curved Sword - Charged R2s
+700800 Curved Sword (Paired) - Low SaRate
+700805 Curved Sword (Paired) - High SaRate
+700860 Curved Sword (Paired) - Mid SaRate
+700890 Curved Sword (Paired) - Jumping L1s
+800000 Curved Greatsword - Default
+800010 Curved Greatsword - Subsequent R1s
+800100 Curved Greatsword - R2s
+800105 Curved Greatsword - Charged R2s
+800800 Curved Greatsword (Paired) - Low SaRate
+800805 Curved Greatsword (Paired) - High SaRate
+800860 Curved Greatsword (Paired) - Mid SaRate
+800890 Curved Greatsword (Paired) - Jumping L1s
+900000 Katana - Default
+900010 Katana - Subsequent R1s
+900100 Katana - R2s
+900105 Katana - Charged R2s
+900800 Katana (Paired) - Low SaRate
+900805 Katana (Paired) - High SaRate
+900860 Katana (Paired) - Mid SaRate
+900890 Katana (Paired) - Jumping L1s
+1000000 Twinblade - Default
+1000010 Twinblade - Subsequent R1s
+1000100 Twinblade - R2s
+1000105 Twinblade - Charged R2s
+1000800 Twinblade (Paired) - Low SaRate
+1000805 Twinblade (Paired) - High SaRate
+1000860 Twinblade (Paired) - Mid SaRate
+1000890 Twinblade (Paired) - Jumping L1s
+1100000 Hammer - Default
+1100010 Hammer - Subsequent R1s
+1100100 Hammer - R2s
+1100105 Hammer - Charged R2s
+1100800 Hammer (Paired) - Low SaRate
+1100805 Hammer (Paired) - High SaRate
+1100860 Hammer (Paired) - Mid SaRate
+1100890 Hammer (Paired) - Jumping L1s
+1200000 Great Hammer - Default
+1200010 Great Hammer - Subsequent R1s
+1200100 Great Hammer - R2s
+1200105 Great Hammer - Charged R2s
+1200800 Great Hammer (Paired) - Low SaRate
+1200805 Great Hammer (Paired) - High SaRate
+1200860 Great Hammer (Paired) - Mid SaRate
+1200890 Great Hammer (Paired) - Jumping L1s
+1300000 Hammer - Default
+1300010 Hammer - Subsequent R1s
+1300100 Hammer - R2s
+1300105 Hammer - Charged R2s
+1300800 Hammer (Paired) - Low SaRate
+1300805 Hammer (Paired) - High SaRate
+1300860 Hammer (Paired) - Mid SaRate
+1300890 Hammer (Paired) - Jumping L1s
+1400000 Axe - Default
+1400010 Axe - Subsequent R1s
+1400100 Axe - R2s
+1400105 Axe - Charged R2s
+1400800 Axe (Paired) - Low SaRate
+1400805 Axe (Paired) - High SaRate
+1400860 Axe (Paired) - Mid SaRate
+1400890 Axe (Paired) - Jumping L1s
+1500000 Greataxe - Default
+1500010 Greataxe - Subsequent R1s
+1500100 Greataxe - R2s
+1500105 Greataxe - Charged R2s
+1500800 Greataxe (Paired) - Low SaRate
+1500805 Greataxe (Paired) - High SaRate
+1500860 Greataxe (Paired) - Mid SaRate
+1500890 Greataxe (Paired) - Jumping L1s
+1600000 Spear - Default
+1600010 Spear - Subsequent R1s
+1600100 Spear - R2s
+1600105 Spear - Charged R2s
+1600800 Spear (Paired) - Low SaRate
+1600805 Spear (Paired) - High SaRate
+1600860 Spear (Paired) - Mid SaRate
+1600890 Spear (Paired) - Jumping L1s
+1700000 Great Spear - Default
+1700010 Great Spear - Subsequent R1s
+1700100 Great Spear - R2s
+1700105 Great Spear - Charged R2s
+1700800 Great Spear (Paired) - Low SaRate
+1700805 Great Spear (Paired) - High SaRate
+1700860 Great Spear (Paired) - Mid SaRate
+1700890 Great Spear (Paired) - Jumping L1s
+1800000 Halberd - Default
+1800010 Halberd - Subsequent R1s
+1800100 Halberd - R2s
+1800105 Halberd - Charged R2s
+1800800 Halberd (Paired) - Low SaRate
+1800805 Halberd (Paired) - High SaRate
+1800860 Halberd (Paired) - Mid SaRate
+1800890 Halberd (Paired) - Jumping L1s
+1900000 Reaper - Default
+1900010 Reaper - Subsequent R1s
+1900100 Reaper - R2s
+1900105 Reaper - Charged R2s
+1900800 Reaper (Paired) - Low SaRate
+1900805 Reaper (Paired) - High SaRate
+1900860 Reaper (Paired) - Mid SaRate
+1900890 Reaper (Paired) - Jumping L1s
+2000000 Whip - Default
+2000010 Whip - Subsequent R1s
+2000100 Whip - R2s
+2000105 Whip - Charged R2s
+2000800 Whip (Paired) - Low SaRate
+2000805 Whip (Paired) - High SaRate
+2000860 Whip (Paired) - Mid SaRate
+2000890 Whip (Paired) - Jumping L1s
+2100000 Fist - Default
+2100010 Fist - Subsequent R1s
+2100100 Fist - R2s
+2100105 Fist - Charged R2s
+2100800 Fist (Paired) - Low SaRate
+2100805 Fist (Paired) - High SaRate
+2100860 Fist (Paired) - Mid SaRate
+2100890 Fist (Paired) - Jumping L1s
+2200000 Claw - Default
+2200010 Claw - Subsequent R1s
+2200100 Claw - R2s
+2200105 Claw - Charged R2s
+2200800 Claw (Paired) - Low SaRate
+2200805 Claw (Paired) - High SaRate
+2200860 Claw (Paired) - Mid SaRate
+2200890 Claw (Paired) - Jumping L1s
+2300000 Colossal Weapon - Default
+2300010 Colossal Weapon - Subsequent R1s
+2300100 Colossal Weapon - R2s
+2300105 Colossal Weapon - Charged R2s
+2300800 Colossal Weapon (Paired) - Low SaRate
+2300805 Colossal Weapon (Paired) - High SaRate
+2300860 Colossal Weapon (Paired) - Mid SaRate
+2300890 Colossal Weapon (Paired) - Jumping L1s
+2400000 Torch - Default
+2400010 Torch - Subsequent R1s
+2400100 Torch - R2s
+2400105 Torch - Charged R2s
+2400800 Torch
+2400805 Torch
+2400860 Torch
+2400890 Torch
+3000000 Small Shield - Default
+3000010 Small Shield - Subsequent R1s
+3000100 Small Shield - R2s
+3000105 Small Shield - Charged R2s
+3000800 Small Shield
+3000805 Small Shield
+3000860 Small Shield
+3000890 Small Shield
+3100000 Medium Shield - Default
+3100010 Medium Shield - Subsequent R1s
+3100100 Medium Shield - R2s
+3100105 Medium Shield - Charged R2s
+3100800 Medium Shield
+3100805 Medium Shield
+3100860 Medium Shield
+3100890 Medium Shield
+3200000 Greatshield - Default
+3200010 Greatshield - Subsequent R1s
+3200100 Greatshield - R2s
+3200105 Greatshield - Charged R2s
+3200800 Greatshield
+3200805 Greatshield
+3200860 Greatshield
+3200890 Greatshield
+3300000 Glintstone Staff - Default
+3300010 Glintstone Staff - Subsequent R1s
+3300100 Glintstone Staff
+3300105 Glintstone Staff - Jumping R2s
+3300800 Glintstone Staff
+3300805 Glintstone Staff
+3300860 Glintstone Staff
+3300890 Glintstone Staff
+3400000 Sacred Seal - Default
+3400010 Sacred Seal - Subsequent R1s
+3400100 Sacred Seal
+3400105 Sacred Seal - Jumping R2s
+3400800 Sacred Seal
+3400805 Sacred Seal
+3400860 Sacred Seal
+3400890 Sacred Seal

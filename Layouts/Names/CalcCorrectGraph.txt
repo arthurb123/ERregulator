@@ -1,0 +1,57 @@
+0 [Scaling] 60 (75%) -> 80 (90%) - Default
+1 [Scaling] 60 (75%) -> 80 (90%) - Heavy
+2 [Scaling] 60 (75%) -> 80 (90%) - Keen
+3 [Scaling] 30 (62%) -> 50 (82%) - Physical Consumable
+4 [Scaling] 50 (80%) -> 80 (95%) - Elemental
+5 [Scaling] 40 (225%) -> 80 (270%) - Serpent Bow Poison
+6 [Scaling] 45 (75%) -> 60 (90%) - Status Default
+7 [Scaling] 60 (75%) -> 80 (90%) - Occult/Innate Arc
+8 [Scaling] 60 (75%) -> 80 (90%) - Quality
+9 [Scaling] 60 (80%) -> 80 (95%)
+10 [Scaling] 30 (50%) -> 50 (60%) - Status Consumable
+11 [Scaling] 45 (15%) -> 60 (18%) - Status Catalyst
+12 [Scaling] 30 (55%) -> 45 (75%) - Catalyst
+13 [Scaling] 30 (35%) -> 80 (90%)
+14 [Scaling] 40 (60%) -> 80 (85%) - Catalyst
+15 [Scaling] 60 (65%) -> 80 (95%) - Catalyst
+16 [Scaling] 60 (75%) -> 80 (90%) - Catalyst
+50 Blue Dancer Charm
+100 HP - Vigor
+101 FP Scaling - Mind
+102 [Defense] All - Stat Total
+104 Stamina - Endurance
+110 [Resistance] Poison - Stat Total
+111 [Resistance] Scarlet Rot - Stat Total
+112 [Resistance] Hemorrhage - Stat Total
+113 [Resistance] Frostbite - Stat Total
+114 [Resistance] Sleep - Stat Total
+115 [Resistance] Madness - Stat Total
+116 [Resistance] Death - Stat Total
+120 [Resistance] Poison - Vigor
+121 [Resistance] Scarlet Rot - Vigor
+122 [Resistance] Hemorrhage - Endurance
+123 [Resistance] Frostbite - Endurance
+124 [Resistance] Sleep - Mind
+125 [Resistance] Madness - Mind
+126 [Resistance] Death - Arcane
+130 [Defense] Physical - Strength
+131 [Defense] Physical - N/A
+132 [Defense] Magic - Intelligence
+133 [Defense] Fire - Vigor
+134 [Defense] Lightning - N/A
+135 [Defense] Holy - Arcane
+140 Item Discovery - Arcane
+160 Shield - Absorption %
+161 Shield - Attribute %
+162 Shield - Status %
+163 Shield - Stamina %
+170 Weapon Arts Point Max - Strength
+171 Weapon Arts Point Max - Dexterity
+172 Weapon Arts Point Max - Intelligence
+173 Weapon Arts Point Max - Faith
+200 Soul Level - Souls Required
+210 Fall Damage - Distance
+211 Fall Damage - Equip Load
+212 Fall Damage - Strength
+213 Fall Damage - Dexterity
+220 Equip Load - Endurance
