@@ -25,5 +25,5 @@ Please download the latest release from the [Releases](https://github.com/arthur
 To use the app, please refer to [Usage](#usage).
 
 ## Credits
-[Paramdex](https://github.com/soulsmods/Paramdex) by soulsmods
+[Paramdex](https://github.com/soulsmods/Paramdex) by soulsmods<br>
 [SoulsFormatsNEXT](https://github.com/soulsmods/SoulsFormatsNEXT) by soulsmods & JKAnderson
